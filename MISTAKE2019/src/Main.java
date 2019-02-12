@@ -1,4 +1,3 @@
-import javax.swing.JFrame;
 
 public class Main {
 	
@@ -7,6 +6,7 @@ public class Main {
 	Robot r3;
 	Match match;
 	Score currScore;
+	static int hatchPoints = 2;
 	
 
 	public static void main(String[] args) {
@@ -15,11 +15,14 @@ public class Main {
 		r4541.getHatchTime();
 		Robot r2;
 		Robot r3;
-		Match currState;
+		Match match = new Match();
 		Match tempState;
-		Score currScore = new Score();
-		System.out.println(currScore.currHatchPoints);
+		Score myScore = new Score();
 		
+		System.out.println(myScore.currHatchPoints);
+		
+		myScore.calculateMoveScore(hatchPoints);
+		System.out.println(myScore.calculateTempScore());
 		
 		
 		

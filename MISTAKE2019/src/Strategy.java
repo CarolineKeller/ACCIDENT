@@ -57,7 +57,7 @@ public class Strategy implements Serializable{
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	
 	public void Runnable() {
 	}
@@ -88,7 +88,7 @@ public class Strategy implements Serializable{
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	protected void initialize() {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 340);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -45,7 +45,7 @@ public class Strategy2 extends Strategy implements Serializable{
 	
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -66,7 +66,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		initialize();
 }
 	
-	protected void initialize() {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 600, 380);
@@ -377,55 +377,13 @@ public class Strategy2 extends Strategy implements Serializable{
 			
 	}
 	
-	Strategy object = new Strategy();
-	String filename = "file.ser";
-	{
-	FileOutputStream file;
-	try {
-		file = new FileOutputStream(filename);
-
-    ObjectOutputStream out = new ObjectOutputStream(file); 
-      
-    // Method for serialization of object 
-    out.writeObject(object); 
-      
-    out.close(); 
-    file.close(); 
-      
-    System.out.println("Object has been serialized"); 
-	}
-	
-	catch(IOException ex) {
-		System.out.println("IOException is caught");
-	}
-	Strategy object1;
-	try {
-		FileInputStream file1 = new FileInputStream(filename); 
-        ObjectInputStream in = new ObjectInputStream(file1); 
-          
-        object1 = (Strategy)in.readObject(); 
-          
-        in.close(); 
-        file1.close(); 
-          
-        System.out.println("Object has been deserialized "); 
-        System.out.println(); 
-        System.out.println(); 
-    } 
-      
-    catch(IOException ex) 
-    { 
-        System.out.println("IOException is caught"); 
-    } 
-      
-    catch(ClassNotFoundException ex) 
-    { 
-        System.out.println("ClassNotFoundException is caught"); 
-    } 
-	}	
-	
 	public int getLeftHatchNum() {
 		return leftHatchNum;
+	}
+	
+	public void setLeftHatchNum(int lh) {
+		leftHatchNum = lh;
+		return;
 	}
 	
 	public int getLeftCargoNum() {
