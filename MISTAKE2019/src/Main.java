@@ -26,7 +26,6 @@ public class Main extends Match{
 		System.out.println(myScore.calculateTempScore());
 		
 		
-		
 		/*
 		JFrame frame = new JFrame();
 		frame.setVisible(true);

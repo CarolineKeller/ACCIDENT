@@ -22,4 +22,5 @@ public class Score extends Match{
 		return tempScore;
 	}
 	
+	
 }
