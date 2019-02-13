@@ -1,5 +1,5 @@
 
-public class Main {
+public class Main extends Match{
 	
 	Robot r4541;
 	Robot r2;
@@ -10,8 +10,9 @@ public class Main {
 	
 
 	public static void main(String[] args) {
+		Strategy strategy = new Strategy();
 		Robot r4541 = new Robot();
-		r4541.setHatchTime(5);
+		r4541.setHatchTime(Double.parseDouble(strategy.ourHatchTextField.getText()));
 		r4541.getHatchTime();
 		Robot r2;
 		Robot r3;
