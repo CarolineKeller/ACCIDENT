@@ -30,22 +30,34 @@ public class Strategy2 extends Strategy implements Serializable{
 	 * 
 	 */
 	private JFrame frame;
+	protected JTextArea textArea;
 	static int interval;
 	static Timer timer;
 	public String secs = "150";
-	protected int leftHatchNum = 0;
-	protected int leftCargoNum = 0;
-	protected int shipHatchNum = 0;
-	protected int shipCargoNum = 0;
-	protected int rightHatchNum = 0;
-	protected int rightCargoNum = 0;
+	protected double leftHatchNum = 0;
+	protected double leftCargoNum = 0;
+	protected double shipHatchNum = 0;
+	protected double shipCargoNum = 0;
+	protected double rightHatchNum = 0;
+	protected double rightCargoNum = 0;
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
 	
+
+	double possibleLeftRocketHatches = 6;
+	double possibleLeftRocketCargo = 0;
+	double possibleRightRocketCargo = 0;
+	double possibleShipCargo = 0;
+	double possibleRightRocketHatches = 6;
+	double possibleShipHatches = 6;
+	
+	
+	
+	
 	/**
 	 * Launch the application.
-	 *
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -77,7 +89,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		frame.getContentPane().add(timePanel);
 		timePanel.setLayout(new GridLayout(2, 1, 0, 0));
 		
-			JTextArea textArea = new JTextArea();
+			textArea = new JTextArea();
 			textArea.setFont(new Font("Lucida Grande", Font.PLAIN, 26));
 			textArea.setForeground(Color.BLACK);
 			textArea.setEditable(false);
@@ -167,6 +179,9 @@ public class Strategy2 extends Strategy implements Serializable{
 				public void actionPerformed(ActionEvent e) {
 					leftHatchNum++;
 					leftHatchText.setText("" + leftHatchNum);
+					possibleLeftRocketCargo += 0.5;
+					System.out.println(possibleLeftRocketCargo);
+					
 				}
 			});
 			btnNewButton.setBounds(12, 30, 81, 29);
@@ -375,9 +390,10 @@ public class Strategy2 extends Strategy implements Serializable{
 			label.setBounds(0, 0, 600, 380);
 			frame.getContentPane().add(label);
 			
+			
 	}
 	
-	public int getLeftHatchNum() {
+	public double getLeftHatchNum() {
 		return leftHatchNum;
 	}
 	
@@ -386,23 +402,28 @@ public class Strategy2 extends Strategy implements Serializable{
 		return;
 	}
 	
-	public int getLeftCargoNum() {
+	public double getLeftCargoNum() {
 		return leftCargoNum;
 	}
 	
-	public int getShipHatchNum() {
+	public double getShipHatchNum() {
 		return shipHatchNum;
 	}
 	
-	public int getShipCargoNum() {
+	public double getShipCargoNum() {
 		return shipCargoNum;
 	}
 	
-	public int getRightHatchNum() {
+	public double getRightHatchNum() {
 		return rightHatchNum;
 	}
 	
-	public int getRightCargoNum() {
+	public double getRightCargoNum() {
 		return rightCargoNum;
 	}
+	
+	
+	
+	
 }
+

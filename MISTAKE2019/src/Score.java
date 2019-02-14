@@ -1,21 +1,19 @@
 
 public class Score extends Match{
 	
-	{
-	this.leftHatchNum = 3;
-	}
-	int currHatchPoints = (leftHatchNum + shipHatchNum + rightHatchNum) * hatchPoints;
-	int currCargoPoints = (leftCargoNum + shipCargoNum + rightCargoNum) * hatchPoints;
-	int currScore = currHatchPoints + currCargoPoints;
-	int tempScore = 0;
-	int moveScore;
+
+	double currHatchPoints = (leftHatchNum + shipHatchNum + rightHatchNum) * hatchPoints;
+	double currCargoPoints = (leftCargoNum + shipCargoNum + rightCargoNum) * hatchPoints;
+	double currScore = currHatchPoints + currCargoPoints;
+	double tempScore = 0;
+	double moveScore;
 	
-	public int calculateMoveScore(int movePoints) {
+	public double calculateMoveScore(int movePoints) {
 		moveScore = currScore + movePoints;
 		return moveScore;
 	}
 	
-	public int calculateTempScore() {
+	public double calculateTempScore() {
 		if (moveScore > tempScore){
 			tempScore = moveScore;
 		}
