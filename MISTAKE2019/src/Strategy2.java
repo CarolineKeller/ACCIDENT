@@ -59,7 +59,7 @@ public class Strategy2 extends Strategy implements Serializable{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+	/*	EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Strategy2 window = new Strategy2();
@@ -68,7 +68,7 @@ public class Strategy2 extends Strategy implements Serializable{
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
 	}
 
 	/**
@@ -79,14 +79,14 @@ public class Strategy2 extends Strategy implements Serializable{
 }
 	
 	private void initialize() {
-		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 600, 380);
-		frame.getContentPane().setLayout(null);
+		setFrame(new JFrame());
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().setBounds(100, 100, 600, 380);
+		getFrame().getContentPane().setLayout(null);
 		
 		JPanel timePanel = new JPanel();
 		timePanel.setBounds(6, 6, 169, 59);
-		frame.getContentPane().add(timePanel);
+		getFrame().getContentPane().add(timePanel);
 		timePanel.setLayout(new GridLayout(2, 1, 0, 0));
 		
 			textArea = new JTextArea();
@@ -157,7 +157,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		JPanel leftRocketPanel = new JPanel();
 		leftRocketPanel.setBounds(6, 89, 119, 116);
 		leftRocketPanel.setOpaque(false);
-		frame.getContentPane().add(leftRocketPanel);
+		getFrame().getContentPane().add(leftRocketPanel);
 			leftRocketPanel.setLayout(null);
 		
 			JLabel lblRocket = new JLabel("Left Rocket");
@@ -209,7 +209,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		JPanel cargoShipPanel = new JPanel();
 		cargoShipPanel.setBounds(212, 147, 145, 110);
 		cargoShipPanel.setOpaque(false);
-		frame.getContentPane().add(cargoShipPanel);
+		getFrame().getContentPane().add(cargoShipPanel);
 			cargoShipPanel.setLayout(null);
 		
 			JLabel lblCargoShip = new JLabel("Cargo Ship");
@@ -255,7 +255,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		JPanel rightRocketPanel = new JPanel();
 		rightRocketPanel.setBounds(449, 89, 145, 116);
 		rightRocketPanel.setOpaque(false);
-		frame.getContentPane().add(rightRocketPanel);
+		getFrame().getContentPane().add(rightRocketPanel);
 			rightRocketPanel.setLayout(null);
 		
 			JLabel lblRightRocket = new JLabel("Right Rocket");
@@ -301,7 +301,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		
 		JPanel commandPanel = new JPanel();
 		commandPanel.setBounds(291, 6, 303, 59);
-		frame.getContentPane().add(commandPanel);
+		getFrame().getContentPane().add(commandPanel);
 		commandPanel.setLayout(null);
 		
 			JLabel lblCommand = new JLabel("Command:");
@@ -317,7 +317,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		
 		JPanel panelRdBtn1 = new JPanel();
 		panelRdBtn1.setBounds(6, 272, 137, 80);
-		frame.getContentPane().add(panelRdBtn1);
+		getFrame().getContentPane().add(panelRdBtn1);
 		panelRdBtn1.setLayout(null);
 		
 			JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Defended");
@@ -340,7 +340,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		
 		JPanel panelRdBtn2 = new JPanel();
 		panelRdBtn2.setBounds(220, 272, 169, 80);
-		frame.getContentPane().add(panelRdBtn2);
+		getFrame().getContentPane().add(panelRdBtn2);
 		panelRdBtn2.setLayout(null);
 		
 			JRadioButton rdbtnNotWorking_1 = new JRadioButton("Not Working");
@@ -363,7 +363,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		
 		JPanel panelRdBtn3 = new JPanel();
 		panelRdBtn3.setBounds(449, 272, 145, 80);
-		frame.getContentPane().add(panelRdBtn3);
+		getFrame().getContentPane().add(panelRdBtn3);
 		panelRdBtn3.setLayout(null);
 		
 			JRadioButton rdbtnDefended_1 = new JRadioButton("Defended");
@@ -388,7 +388,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			Image pics = new ImageIcon(this.getClass().getResource("/SpaceBkgrndMed.png")).getImage();
 			label.setIcon(new ImageIcon(pics));
 			label.setBounds(0, 0, 600, 380);
-			frame.getContentPane().add(label);
+			getFrame().getContentPane().add(label);
 			
 			
 	}
@@ -420,6 +420,14 @@ public class Strategy2 extends Strategy implements Serializable{
 	
 	public double getRightCargoNum() {
 		return rightCargoNum;
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 	
 	

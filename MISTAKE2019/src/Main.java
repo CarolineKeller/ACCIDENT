@@ -1,3 +1,4 @@
+import java.awt.EventQueue;
 
 public class Main extends Match{
 	
@@ -34,6 +35,16 @@ public class Main extends Match{
 		strategy.initialize(); */
 		
 		Strategy2 s2 = new Strategy2();
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Strategy2 window = new Strategy2();
+					window.getFrame().setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 		s2.leftHatchNum = 2.0;
 		match.possibleLeftRocketHatches = 4;
