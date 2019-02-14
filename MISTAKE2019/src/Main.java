@@ -12,6 +12,17 @@ public class Main extends Match{
 
 	public static void main(String[] args) {
 		Strategy strategy = new Strategy();
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						Strategy window = new Strategy();
+						window.frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		
 		/*Robot r4541 = new Robot();
 		r4541.setHatchTime(Double.parseDouble(strategy.ourHatchTextField.getText()));
 		r4541.getHatchTime();
@@ -26,13 +37,7 @@ public class Main extends Match{
 		myScore.calculateMoveScore(hatchPoints);
 		System.out.println(myScore.calculateTempScore());
 		
-		
-		/*
-		JFrame frame = new JFrame();
-		frame.setVisible(true);
-		Strategy strategy = new Strategy();
-		strategy.Runnable();
-		strategy.initialize(); */
+		*/
 		
 		Strategy2 s2 = new Strategy2();
 		EventQueue.invokeLater(new Runnable() {

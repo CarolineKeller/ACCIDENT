@@ -76,7 +76,7 @@ public class Strategy implements Serializable{
 	}
 	
 	
-
+ 
 	/**
 	 * Create the application.
 	 * @wbp.parser.entryPoint
