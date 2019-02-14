@@ -31,15 +31,16 @@ public class Strategy2 extends Strategy implements Serializable{
 	 */
 	private JFrame frame;
 	protected JTextArea textArea;
+	protected JTextArea txtrCommandText;
 	static int interval;
 	static Timer timer;
 	public String secs = "150";
-	protected double leftHatchNum = 0;
-	protected double leftCargoNum = 0;
-	protected double shipHatchNum = 0;
-	protected double shipCargoNum = 0;
-	protected double rightHatchNum = 0;
-	protected double rightCargoNum = 0;
+	protected int leftHatchNum = 0;
+	protected int leftCargoNum = 0;
+	protected int shipHatchNum = 0;
+	protected int shipCargoNum = 0;
+	protected int rightHatchNum = 0;
+	protected int rightCargoNum = 0;
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
@@ -59,7 +60,7 @@ public class Strategy2 extends Strategy implements Serializable{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-	/*	EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Strategy2 window = new Strategy2();
@@ -68,7 +69,7 @@ public class Strategy2 extends Strategy implements Serializable{
 					e.printStackTrace();
 				}
 			}
-		});*/
+		});
 	}
 
 	/**
@@ -110,7 +111,7 @@ public class Strategy2 extends Strategy implements Serializable{
 					timer = null;
 				}
 			});
-			btnReset.setFont(new Font("Copperplate", Font.PLAIN, 18));
+			btnReset.setFont(new Font("Monospaced", Font.PLAIN, 17));
 			buttonPanel.add(btnReset);
 		
 			JButton btnStartTimer = new JButton("START");
@@ -132,7 +133,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			        	public void run() {
 			        		textArea.setText(null);
 			            	textArea.setText("" + setInterval());
-			    			System.out.println(textArea.getText());
+			    			
 			        	}
 			    	}, delay, period);
 			}
@@ -149,7 +150,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			
 			});
 		
-			btnStartTimer.setFont(new Font("Copperplate", Font.PLAIN, 18));
+			btnStartTimer.setFont(new Font("Monospaced", Font.PLAIN, 17));
 			buttonPanel.add(btnStartTimer);
 			
 		
@@ -163,13 +164,13 @@ public class Strategy2 extends Strategy implements Serializable{
 			JLabel lblRocket = new JLabel("Left Rocket");
 			lblRocket.setForeground(Color.WHITE);
 			lblRocket.setBounds(6, 5, 113, 20);
-			lblRocket.setFont(new Font("Copperplate", Font.PLAIN, 17));
+			lblRocket.setFont(new Font("Monospaced", Font.PLAIN, 17));
 			leftRocketPanel.add(lblRocket);
 			
 			JTextArea leftHatchText = new JTextArea("" + leftHatchNum);
 			leftHatchText.setForeground(Color.WHITE);
 			leftHatchText.setBounds(98, 37, 21, 32);
-			leftHatchText.setFont(new Font("Copperplate", Font.PLAIN, 16));
+			leftHatchText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			leftHatchText.setEditable(false);
 			leftHatchText.setOpaque(false);
 			leftRocketPanel.add(leftHatchText);
@@ -189,7 +190,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			leftRocketPanel.add(btnNewButton);
 			
 			JTextArea leftCargoText = new JTextArea("" + leftCargoNum);
-			leftCargoText.setFont(new Font("Copperplate", Font.PLAIN, 16));
+			leftCargoText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			leftCargoText.setForeground(Color.WHITE);
 			leftCargoText.setBounds(98, 72, 21, 38);
 			leftCargoText.setEditable(false);
@@ -215,11 +216,11 @@ public class Strategy2 extends Strategy implements Serializable{
 			JLabel lblCargoShip = new JLabel("Cargo Ship");
 			lblCargoShip.setForeground(Color.WHITE);
 			lblCargoShip.setBounds(10, 5, 122, 20);
-			lblCargoShip.setFont(new Font("Copperplate", Font.PLAIN, 17));
+			lblCargoShip.setFont(new Font("Monospaced", Font.PLAIN, 17));
 			cargoShipPanel.add(lblCargoShip);
 			
 			JTextArea shipHatchText = new JTextArea("" + shipHatchNum);
-			shipHatchText.setFont(new Font("Copperplate", Font.PLAIN, 16));
+			shipHatchText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			shipHatchText.setForeground(Color.WHITE);
 			shipHatchText.setBounds(95, 30, 25, 39);
 			shipHatchText.setOpaque(false);
@@ -236,7 +237,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			cargoShipPanel.add(btnHatch);
 			
 			JTextArea shipCargoText = new JTextArea("" + shipCargoNum);
-			shipCargoText.setFont(new Font("Copperplate", Font.PLAIN, 16));
+			shipCargoText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			shipCargoText.setForeground(Color.WHITE);
 			shipCargoText.setOpaque(false);
 			shipCargoText.setBounds(95, 64, 25, 35);
@@ -260,16 +261,16 @@ public class Strategy2 extends Strategy implements Serializable{
 		
 			JLabel lblRightRocket = new JLabel("Right Rocket");
 			lblRightRocket.setForeground(Color.WHITE);
-			lblRightRocket.setBounds(12, 5, 98, 20);
-			lblRightRocket.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+			lblRightRocket.setBounds(12, 5, 127, 20);
+			lblRightRocket.setFont(new Font("Monospaced", Font.PLAIN, 17));
 			rightRocketPanel.add(lblRightRocket);
 			
 			JTextArea rightHatchText = new JTextArea("" + rightCargoNum);
 			rightHatchText.setEditable(false);
-			rightHatchText.setFont(new Font("Copperplate", Font.PLAIN, 16));
+			rightHatchText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			rightHatchText.setForeground(Color.WHITE);
 			rightHatchText.setOpaque(false);
-			rightHatchText.setBounds(6, 37, 21, 22);
+			rightHatchText.setBounds(118, 32, 21, 22);
 			rightRocketPanel.add(rightHatchText);
 		
 			JButton btnHatch_1 = new JButton("Hatch");
@@ -279,14 +280,14 @@ public class Strategy2 extends Strategy implements Serializable{
 					rightHatchText.setText("" + rightHatchNum);
 				}
 			});
-			btnHatch_1.setBounds(35, 30, 81, 29);
+			btnHatch_1.setBounds(12, 30, 81, 29);
 			rightRocketPanel.add(btnHatch_1);
 			
 			JTextArea rightCargoText = new JTextArea("" + rightCargoNum);
-			rightCargoText.setFont(new Font("Copperplate", Font.PLAIN, 16));
+			rightCargoText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			rightCargoText.setForeground(Color.WHITE);
 			rightCargoText.setOpaque(false);
-			rightCargoText.setBounds(6, 67, 21, 43);
+			rightCargoText.setBounds(118, 65, 21, 43);
 			rightRocketPanel.add(rightCargoText);
 		
 			JButton btnCargo_2 = new JButton("Cargo");
@@ -296,7 +297,7 @@ public class Strategy2 extends Strategy implements Serializable{
 					rightCargoText.setText("" + rightCargoNum);
 				}
 			});
-			btnCargo_2.setBounds(35, 64, 81, 29);
+			btnCargo_2.setBounds(12, 65, 81, 29);
 			rightRocketPanel.add(btnCargo_2);
 		
 		JPanel commandPanel = new JPanel();
@@ -305,7 +306,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		commandPanel.setLayout(null);
 		
 			JLabel lblCommand = new JLabel("Command:");
-			lblCommand.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			lblCommand.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			lblCommand.setBounds(0, 0, 262, 16);
 			commandPanel.add(lblCommand);
 		
@@ -321,19 +322,19 @@ public class Strategy2 extends Strategy implements Serializable{
 		panelRdBtn1.setLayout(null);
 		
 			JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Defended");
-			rdbtnNewRadioButton_1.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnNewRadioButton_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup1.add(rdbtnNewRadioButton_1);
 			rdbtnNewRadioButton_1.setBounds(2, 5, 141, 23);
 			panelRdBtn1.add(rdbtnNewRadioButton_1);
 		
 			JRadioButton rdbtnNotWorking = new JRadioButton("Not Working");
-			rdbtnNotWorking.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnNotWorking.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup1.add(rdbtnNotWorking);
 			rdbtnNotWorking.setBounds(2, 26, 129, 23);
 			panelRdBtn1.add(rdbtnNotWorking);
 		
 			JRadioButton rdbtnNewRadioButton = new JRadioButton("Normal");
-			rdbtnNewRadioButton.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnNewRadioButton.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup1.add(rdbtnNewRadioButton);
 			rdbtnNewRadioButton.setBounds(2, 47, 141, 23);
 			panelRdBtn1.add(rdbtnNewRadioButton);
@@ -344,19 +345,19 @@ public class Strategy2 extends Strategy implements Serializable{
 		panelRdBtn2.setLayout(null);
 		
 			JRadioButton rdbtnNotWorking_1 = new JRadioButton("Not Working");
-			rdbtnNotWorking_1.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnNotWorking_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup2.add(rdbtnNotWorking_1);
 			rdbtnNotWorking_1.setBounds(15, 26, 141, 23);
 			panelRdBtn2.add(rdbtnNotWorking_1);
 		
 			JRadioButton rdbtnDefended = new JRadioButton("Defended");
-			rdbtnDefended.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnDefended.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup2.add(rdbtnDefended);
 			rdbtnDefended.setBounds(15, 5, 141, 23);
 			panelRdBtn2.add(rdbtnDefended);
 		
 			JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Normal");
-			rdbtnNewRadioButton_2.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnNewRadioButton_2.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup2.add(rdbtnNewRadioButton_2);
 			rdbtnNewRadioButton_2.setBounds(15, 47, 141, 23);
 			panelRdBtn2.add(rdbtnNewRadioButton_2);
@@ -367,19 +368,19 @@ public class Strategy2 extends Strategy implements Serializable{
 		panelRdBtn3.setLayout(null);
 		
 			JRadioButton rdbtnDefended_1 = new JRadioButton("Defended");
-			rdbtnDefended_1.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnDefended_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup3.add(rdbtnDefended_1);
 			rdbtnDefended_1.setBounds(6, 5, 115, 23);
 			panelRdBtn3.add(rdbtnDefended_1);
 		
 			JRadioButton rdbtnNormal = new JRadioButton("Normal");
-			rdbtnNormal.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnNormal.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup3.add(rdbtnNormal);
 			rdbtnNormal.setBounds(6, 47, 115, 23);
 			panelRdBtn3.add(rdbtnNormal);
 		
 			JRadioButton rdbtnNotWorking_2 = new JRadioButton("Not Working");
-			rdbtnNotWorking_2.setFont(new Font("Copperplate", Font.PLAIN, 14));
+			rdbtnNotWorking_2.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup3.add(rdbtnNotWorking_2);
 			rdbtnNotWorking_2.setBounds(6, 26, 133, 23);
 			panelRdBtn3.add(rdbtnNotWorking_2);
@@ -391,9 +392,10 @@ public class Strategy2 extends Strategy implements Serializable{
 			getFrame().getContentPane().add(label);
 			
 			
+			
 	}
 	
-	public double getLeftHatchNum() {
+	public int getLeftHatchNum() {
 		return leftHatchNum;
 	}
 	
@@ -402,23 +404,23 @@ public class Strategy2 extends Strategy implements Serializable{
 		return;
 	}
 	
-	public double getLeftCargoNum() {
+	public int getLeftCargoNum() {
 		return leftCargoNum;
 	}
 	
-	public double getShipHatchNum() {
+	public int getShipHatchNum() {
 		return shipHatchNum;
 	}
 	
-	public double getShipCargoNum() {
+	public int sgetShipCargoNum() {
 		return shipCargoNum;
 	}
 	
-	public double getRightHatchNum() {
+	public int getRightHatchNum() {
 		return rightHatchNum;
 	}
 	
-	public double getRightCargoNum() {
+	public int getRightCargoNum() {
 		return rightCargoNum;
 	}
 
@@ -430,7 +432,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		this.frame = frame;
 	}
 	
-	
+
 	
 	
 }
