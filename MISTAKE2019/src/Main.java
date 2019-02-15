@@ -8,10 +8,12 @@ public class Main extends Match{
 	Match match;
 	Score currScore;
 	static int hatchPoints = 2;
+	static Strategy2 window;
+	
 	
 
 	public static void main(String[] args) {
-		Strategy strategy = new Strategy();
+		/*Strategy strategy = new Strategy();
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
@@ -39,11 +41,10 @@ public class Main extends Match{
 		
 		*/
 		
-		Strategy2 s2 = new Strategy2();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Strategy2 window = new Strategy2();
+					window = new Strategy2();
 					window.getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,11 +52,11 @@ public class Main extends Match{
 			}
 		});
 		
-		s2.leftHatchNum = 2.0;
-		match.possibleLeftRocketHatches = 4;
-		System.out.println(match.possibleLeftRocketCargo);
-		System.out.println(match.bestMove());
 		
+		System.out.println(match.possibleLeftRocketCargo);
+
+		System.out.println(match.bestMove());
+		window.txtrCommandText.setText((match.bestMove()));
 		
 	}
 
