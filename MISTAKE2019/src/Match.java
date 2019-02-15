@@ -25,6 +25,30 @@ public class Match extends Strategy2 {
 		return cargoPointsPerSecond;
 	}
 	
+	public void calculatePossibleLeftRocketHatches() {
+		possibleLeftRocketHatches = 6 - leftHatchNum;
+	}
+	
+	public void calculatePossibleLeftRocketCargo() {
+		possibleLeftRocketCargo = 6 - leftCargoNum;
+	}
+	
+	public void calculatePossibleRightRocketHatches() {
+		possibleRightRocketHatches = 6 - rightHatchNum;
+	}
+	
+	public void calculatePossibleRightRocketCargo() {
+		possibleRightRocketCargo = 6 - rightCargoNum;
+	}
+	
+	public void calculatePossibleShipHatches() {
+		possibleShipHatches = 6 - shipHatchNum;
+	}
+	
+	public void calculateShipCargo() {
+		possibleShipCargo = 6 - shipCargoNum;
+	}
+	
 
 	public String bestMove() {
 		String leftRocketHatch = "Put a hatch on the left rocket";
@@ -34,6 +58,10 @@ public class Match extends Strategy2 {
 		String shipHatch = "Put a hatch on the cargo ship";
 		String shipCargo = "Put cargo in the cargo ship";
 		possibleLeftRocketCargo *= 2;
+		
+		calculatePossibleLeftRocketHatches();
+		calculatePossibleRightRocketHatches();
+		calculatePossibleShipHatches();
 
 		if ((possibleLeftRocketCargo + possibleLeftRocketHatches) < (possibleRightRocketCargo + possibleRightRocketHatches)){
 
