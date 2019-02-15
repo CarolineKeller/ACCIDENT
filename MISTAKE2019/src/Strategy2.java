@@ -58,7 +58,7 @@ public class Strategy2 extends Strategy implements Serializable{
 	
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -309,15 +309,16 @@ public class Strategy2 extends Strategy implements Serializable{
 			lblCommand.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			lblCommand.setBounds(0, 0, 262, 16);
 			commandPanel.add(lblCommand);
+			
 		
 			JTextArea txtrCommandText = new JTextArea();
 			txtrCommandText.setEditable(false);
 			txtrCommandText.setBounds(0, 17, 303, 42);
-			txtrCommandText.setText("example");
 			commandPanel.add(txtrCommandText);
 		
 		JPanel panelRdBtn1 = new JPanel();
 		panelRdBtn1.setBounds(6, 272, 137, 80);
+		panelRdBtn1.setOpaque(false);
 		getFrame().getContentPane().add(panelRdBtn1);
 		panelRdBtn1.setLayout(null);
 		
@@ -341,22 +342,26 @@ public class Strategy2 extends Strategy implements Serializable{
 		
 		JPanel panelRdBtn2 = new JPanel();
 		panelRdBtn2.setBounds(220, 272, 169, 80);
+		panelRdBtn2.setOpaque(false);
 		getFrame().getContentPane().add(panelRdBtn2);
 		panelRdBtn2.setLayout(null);
 		
 			JRadioButton rdbtnNotWorking_1 = new JRadioButton("Not Working");
+			rdbtnNotWorking_1.setForeground(Color.WHITE);
 			rdbtnNotWorking_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup2.add(rdbtnNotWorking_1);
 			rdbtnNotWorking_1.setBounds(15, 26, 141, 23);
 			panelRdBtn2.add(rdbtnNotWorking_1);
 		
 			JRadioButton rdbtnDefended = new JRadioButton("Defended");
+			rdbtnDefended.setForeground(Color.WHITE);
 			rdbtnDefended.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup2.add(rdbtnDefended);
 			rdbtnDefended.setBounds(15, 5, 141, 23);
 			panelRdBtn2.add(rdbtnDefended);
 		
 			JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Normal");
+			rdbtnNewRadioButton_2.setForeground(Color.WHITE);
 			rdbtnNewRadioButton_2.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup2.add(rdbtnNewRadioButton_2);
 			rdbtnNewRadioButton_2.setBounds(15, 47, 141, 23);
@@ -364,22 +369,26 @@ public class Strategy2 extends Strategy implements Serializable{
 		
 		JPanel panelRdBtn3 = new JPanel();
 		panelRdBtn3.setBounds(449, 272, 145, 80);
+		panelRdBtn3.setOpaque(false);
 		getFrame().getContentPane().add(panelRdBtn3);
 		panelRdBtn3.setLayout(null);
 		
 			JRadioButton rdbtnDefended_1 = new JRadioButton("Defended");
+			rdbtnDefended_1.setForeground(Color.WHITE);
 			rdbtnDefended_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup3.add(rdbtnDefended_1);
 			rdbtnDefended_1.setBounds(6, 5, 115, 23);
 			panelRdBtn3.add(rdbtnDefended_1);
 		
 			JRadioButton rdbtnNormal = new JRadioButton("Normal");
+			rdbtnNormal.setForeground(Color.WHITE);
 			rdbtnNormal.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup3.add(rdbtnNormal);
 			rdbtnNormal.setBounds(6, 47, 115, 23);
 			panelRdBtn3.add(rdbtnNormal);
 		
 			JRadioButton rdbtnNotWorking_2 = new JRadioButton("Not Working");
+			rdbtnNotWorking_2.setForeground(Color.WHITE);
 			rdbtnNotWorking_2.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			buttonGroup3.add(rdbtnNotWorking_2);
 			rdbtnNotWorking_2.setBounds(6, 26, 133, 23);
@@ -388,7 +397,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			JLabel label = new JLabel("");
 			Image pics = new ImageIcon(this.getClass().getResource("/SpaceBkgrndMed.png")).getImage();
 			label.setIcon(new ImageIcon(pics));
-			label.setBounds(0, 0, 600, 380);
+			label.setBounds(0, 0, 600, 358);
 			getFrame().getContentPane().add(label);
 			
 			
