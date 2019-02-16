@@ -208,7 +208,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			leftRocketPanel.add(btnCargo);
 		
 		JPanel cargoShipPanel = new JPanel();
-		cargoShipPanel.setBounds(212, 147, 145, 110);
+		cargoShipPanel.setBounds(220, 147, 137, 110);
 		cargoShipPanel.setOpaque(false);
 		getFrame().getContentPane().add(cargoShipPanel);
 			cargoShipPanel.setLayout(null);
