@@ -32,6 +32,7 @@ public class Strategy2 extends Strategy implements Serializable{
 	private JFrame frame;
 	protected JTextArea textArea;
 	protected JTextArea txtrCommandText;
+	protected JPanel commandPanel;
 	static int interval;
 	static Timer timer;
 	public String secs = "150";
@@ -79,7 +80,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		initialize();
 }
 	
-	private void initialize() {
+	protected void initialize() {
 		setFrame(new JFrame());
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().setBounds(100, 100, 600, 380);
@@ -300,7 +301,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			btnCargo_2.setBounds(12, 65, 81, 29);
 			rightRocketPanel.add(btnCargo_2);
 		
-		JPanel commandPanel = new JPanel();
+		commandPanel = new JPanel();
 		commandPanel.setBounds(291, 6, 303, 59);
 		getFrame().getContentPane().add(commandPanel);
 		commandPanel.setLayout(null);
@@ -311,7 +312,7 @@ public class Strategy2 extends Strategy implements Serializable{
 			commandPanel.add(lblCommand);
 			
 		
-			JTextArea txtrCommandText = new JTextArea();
+			txtrCommandText = new JTextArea();
 			txtrCommandText.setEditable(false);
 			txtrCommandText.setBounds(0, 17, 303, 42);
 			commandPanel.add(txtrCommandText);
@@ -419,7 +420,7 @@ public class Strategy2 extends Strategy implements Serializable{
 		return shipHatchNum;
 	}
 	
-	public int sgetShipCargoNum() {
+	public int getShipCargoNum() {
 		return shipCargoNum;
 	}
 	
@@ -439,7 +440,6 @@ public class Strategy2 extends Strategy implements Serializable{
 		this.frame = frame;
 	}
 	
-
 	
 	
 }

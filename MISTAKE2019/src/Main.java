@@ -17,7 +17,6 @@ public class Main extends Match{
 	static Strategy2 window;
 	private static final String COMMA_DELIMITER = ",";
 	
-	
 
 	public static void main(String[] args) {
 		/*Strategy strategy = new Strategy();
@@ -48,20 +47,8 @@ public class Main extends Match{
 		
 		*/
 		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					window = new Strategy2();
-					window.getFrame().setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-
 		
-
-		BufferedReader br = null;
+BufferedReader br = null;
 		
 		try {
 			br = new BufferedReader(new FileReader("Strategy Data Trial - Sheet1.csv"));
@@ -93,8 +80,20 @@ public class Main extends Match{
 			}
 		
 	}
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					window = new Strategy2();
+					window.getFrame().setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println(match.bestMove());
+				window.txtrCommandText.setText(match.bestMove());
+			}
+		});
 	
-		System.out.println(match.bestMove());
 
 		
 	}
