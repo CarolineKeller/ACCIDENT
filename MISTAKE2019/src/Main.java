@@ -58,10 +58,9 @@ public class Main extends Match{
 				}
 			}
 		});
-		
 
 		
-		
+
 		BufferedReader br = null;
 		
 		try {
@@ -94,8 +93,9 @@ public class Main extends Match{
 			}
 		
 	}
-		
+	
 		System.out.println(match.bestMove());
-		window.txtrCommandText.setText((match.bestMove()));
+
+		
 	}
 }

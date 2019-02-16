@@ -19,7 +19,7 @@ import  java.io.Serializable;
 
 public class Strategy implements Serializable{
 
-	private final long serialversionUID = 123456789;
+	private static final long serialVersionUID = 123456790L;
 	protected JFrame frame;
 	protected JTextField ourHatchTextField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();

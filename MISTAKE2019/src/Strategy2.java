@@ -400,8 +400,6 @@ public class Strategy2 extends Strategy implements Serializable{
 			label.setBounds(0, 0, 600, 358);
 			getFrame().getContentPane().add(label);
 			
-			
-			
 	}
 	
 	public int getLeftHatchNum() {
