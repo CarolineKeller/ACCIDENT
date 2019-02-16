@@ -1,4 +1,4 @@
-,Seconds to Climb,Hatch Cycle Time,Cargo Cycle Time,Climb Level
-4541,5,2,23,3
-Robot 2,20,4,13,1
-Robot 3,10,42,1,1
+,Hatch Cycle Time,Cargo Cycle Time,Climb Time (Secs),Climb Level
+4541,2,23,5,3
+Robot 2,4,13,20,1
+Robot 3,42,1,10,1

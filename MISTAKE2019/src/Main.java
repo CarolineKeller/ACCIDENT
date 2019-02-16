@@ -8,10 +8,6 @@ import java.io.BufferedReader;
 
 public class Main extends Match{
 	
-	Robot r4541;
-	Robot r2;
-	Robot r3;
-	Match match;
 	Score currScore;
 	static int hatchPoints = 2;
 	static Strategy2 window;
@@ -36,7 +32,8 @@ public class Main extends Match{
 		r4541.getHatchTime();
 		Robot r2;
 		Robot r3; */
-		Match match = new Match();/*
+		Match match = new Match();
+		/*
 		Match tempState;
 		Score myScore = new Score();
 		
@@ -67,7 +64,7 @@ BufferedReader br = null;
 			}
 			
 			for(Robot a : robotList) {
-				System.out.println("Climb Time: " + a.getClimbTime() + " Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "  Climb Level: " + a.getClimbLevel());
+				System.out.println("Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "   Climb Time: " + a.getClimbTime() + "   Climb Level: " + a.getClimbLevel() + " ");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -89,8 +86,14 @@ BufferedReader br = null;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				System.out.println(match.bestMove());
-				window.txtrCommandText.setText(match.bestMove());
+				window.getLeftHatchNum();
+				window.getLeftCargoNum();
+				window.getRightHatchNum();
+				window.getRightCargoNum();
+				//for(int i = 0; i < 50; i++) {
+				System.out.println(match.bestMoveR4541());
+				window.txtrCommandText.setText(match.bestMoveR4541());
+				//}
 			}
 		});
 	
