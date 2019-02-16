@@ -48,7 +48,7 @@ public class Robot {
 		return;
 	}
 	
-	public double getClimbLevel() {
+	public int getClimbLevel() {
 		return climbLevel;
 	}
 	
