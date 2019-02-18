@@ -444,7 +444,7 @@ public class Strategy implements Serializable{
 			JButton btnSubmit = new JButton("SUBMIT");
 			btnSubmit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Robot r4541 = new Robot(Double.parseDouble(ourHatchTextField.getText()), Double.parseDouble(ourCargoTextField.getText()), Double.parseDouble(ourClimbTextField.getText()), getButtonSelected(buttonGroup));
+					/*Robot r4541 = new Robot(Double.parseDouble(ourHatchTextField.getText()), Double.parseDouble(ourCargoTextField.getText()), Double.parseDouble(ourClimbTextField.getText()), getButtonSelected(buttonGroup));
 					System.out.println(r4541.getHatchTime());
 					System.out.println(r4541.getCargoTime());
 					System.out.println(r4541.getClimbTime());
@@ -464,7 +464,7 @@ public class Strategy implements Serializable{
 					System.out.println(r3.getHatchTime());
 					System.out.println(r3.getCargoTime());
 					System.out.println(r3.getClimbTime());
-					System.out.println(r3.getClimbLevel());
+					System.out.println(r3.getClimbLevel());*/
 				}
 			});
 			btnSubmit.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
