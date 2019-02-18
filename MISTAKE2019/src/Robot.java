@@ -1,13 +1,15 @@
 
 public class Robot {
 	
+	protected String teamName;
 	protected double hatchTime;
 	protected double cargoTime;
 	protected double climbTime;
 	protected int climbLevel;
 	Strategy strategy;
 	
-	public Robot(double h, double c, double t, int l) {
+	public Robot(String n, double h, double c, double t, int l) {
+		teamName = n;
 		hatchTime = h;
 		cargoTime = c;
 		climbTime = t;
@@ -15,13 +17,24 @@ public class Robot {
 	}
 	
 	public Robot() {
+		teamName = "blank";
 		hatchTime = -1;
 		cargoTime = -1;
 		climbTime = -1;
 		climbLevel = -1;
 	}
 	
+	public String getTeamName() {
+		return teamName;
+	}
+	
+	public void setTeamName(String n) {
+		teamName = n;
+		return;
+	}
+	
 	public double getHatchTime() {
+		//hatchTime = 18;
 		return hatchTime;
 	}
 	
@@ -31,6 +44,7 @@ public class Robot {
 	}
 	
 	public double getCargoTime() {
+		//cargoTime = 18;
 		return cargoTime;
 	}
 
@@ -40,6 +54,7 @@ public class Robot {
 	}
 	
 	public double getClimbTime() {
+		//climbTime = 20;
 		return climbTime;
 	}
 	
