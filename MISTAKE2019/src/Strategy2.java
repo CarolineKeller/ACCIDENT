@@ -173,10 +173,12 @@ public class Strategy2 extends Strategy implements Serializable{
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					leftHatchNum++;
+					if(leftHatchNum >= 6) {
+						leftHatchNum = 6;
+					}
 					leftHatchText.setText("" + leftHatchNum);
 					possibleLeftRocketCargo += 0.5;
-					System.out.println(possibleLeftRocketCargo);
-					
+					System.out.println(possibleLeftRocketCargo);	
 				}
 			});
 			btnNewButton.setBounds(12, 30, 81, 29);
@@ -195,6 +197,9 @@ public class Strategy2 extends Strategy implements Serializable{
 			btnCargo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					leftCargoNum++;
+					if(leftCargoNum >= 6) {
+						leftCargoNum = 6;
+					}
 					leftCargoText.setText("" + leftCargoNum);
 				}
 			});
@@ -224,6 +229,9 @@ public class Strategy2 extends Strategy implements Serializable{
 			btnHatch.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					shipHatchNum++;
+					if(shipHatchNum >= 8) {
+						shipHatchNum = 8;
+					}
 					shipHatchText.setText("" + shipHatchNum);
 					possibleShipCargo += 0.5;
 				}
@@ -242,6 +250,9 @@ public class Strategy2 extends Strategy implements Serializable{
 			btnCargo_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					shipCargoNum++;
+					if(shipCargoNum >= 8) {
+						shipCargoNum = 8;
+					}
 					shipCargoText.setText("" + shipCargoNum);
 				}
 			});
@@ -272,6 +283,9 @@ public class Strategy2 extends Strategy implements Serializable{
 			btnHatch_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rightHatchNum++;
+					if(rightHatchNum >= 6) {
+						rightHatchNum = 6;
+					}
 					rightHatchText.setText("" + rightHatchNum);
 					possibleRightRocketCargo += 0.5;
 				}
@@ -290,6 +304,9 @@ public class Strategy2 extends Strategy implements Serializable{
 			btnCargo_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rightCargoNum++;
+					if(rightCargoNum >= 6) {
+						rightCargoNum = 6;
+					}
 					rightCargoText.setText("" + rightCargoNum);
 				}
 			});
