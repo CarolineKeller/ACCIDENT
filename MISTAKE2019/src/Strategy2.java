@@ -177,8 +177,7 @@ public class Strategy2 extends Strategy implements Serializable{
 						leftHatchNum = 6;
 					}
 					leftHatchText.setText("" + leftHatchNum);
-					possibleLeftRocketCargo += 0.5;
-					System.out.println(possibleLeftRocketCargo);	
+					possibleLeftRocketCargo += 0.5;	
 				}
 			});
 			btnNewButton.setBounds(12, 30, 81, 29);
