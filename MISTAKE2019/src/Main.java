@@ -64,13 +64,13 @@ public class Main extends Match{
 				String[] data = line.split(COMMA_DELIMITER);
 				
 				if(data.length > 0) {
-					r = new Robot((Double.parseDouble(data[1])), (Double.parseDouble(data[2])), (Double.parseDouble(data[3])), (Integer.parseInt(data[4])));
+					r = new Robot((data[0]), (Double.parseDouble(data[1])), (Double.parseDouble(data[2])), (Double.parseDouble(data[3])), (Integer.parseInt(data[4])));
 					robotList.add(r);
 				}
 			}
 			
 			for(Robot a : robotList) {
-				System.out.println("Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "   Climb Time: " + a.getClimbTime() + "   Climb Level: " + a.getClimbLevel() + " ");
+				System.out.println("Team: " + a.getTeamName() + "  Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "   Climb Time: " + a.getClimbTime() + "   Climb Level: " + a.getClimbLevel() + " ");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -107,7 +107,6 @@ public class Main extends Match{
 		    	internalTimer.scheduleAtFixedRate(new TimerTask() {
 		    	
 		        	public void run() {
-		        		System.out.println(match.bestMoveR4541());
 						match.window.txtrCommandText.setText(match.bestMoveR4541());
 		    			
 		        	}
