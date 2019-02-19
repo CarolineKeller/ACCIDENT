@@ -13,7 +13,8 @@ public class Main extends Match{
 	Score currScore;
 	static int hatchPoints = 2;
 	private static final String COMMA_DELIMITER = ",";
-	static List <Robot> robotList;
+	static ArrayList <Robot> robotList;
+	static String [][] myArray;
 	static Robot r;
 	static Timer internalTimer;
 	static int internalInterval;
@@ -48,8 +49,6 @@ public class Main extends Match{
 		System.out.println(myScore.calculateTempScore());
 		
 		*/
-		match.possibleLeftRocketHatches = 3;
-		match.possibleLeftRocketCargo = 2;
 		
 		BufferedReader br = null;
 		
@@ -60,7 +59,7 @@ public class Main extends Match{
 			String line = "";
 			br.readLine();
 			
-			String [][] myArray = new String[2][4];
+			myArray = new String[2][4];
 			
 			while ((line = br.readLine()) != null) {
 				String[] data = line.split(COMMA_DELIMITER);
@@ -74,13 +73,19 @@ public class Main extends Match{
 					String str_string  = str;
 					myArray[0][1] = str_string;
 					System.out.println(myArray[0][1]);
+					
 				}
+				/*match.r4541.setHatchTime((Double.parseDouble(myArray[0][1])));
+				System.out.println(match.r4541.getHatchTime());
+				match.r4541.setCargoTime((Double.parseDouble(myArray[0][2])));
+				*/
 			}
 			
 		/*	for(Robot a : robotList) {
 				System.out.println("Team: " + a.getTeamName() + "  Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "   Climb Time: " + a.getClimbTime() + "   Climb Level: " + a.getClimbLevel() + " ");
 			}
 			*/
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -92,6 +97,7 @@ public class Main extends Match{
 			}
 		
 	}
+		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -116,6 +122,8 @@ public class Main extends Match{
 		    	internalTimer.scheduleAtFixedRate(new TimerTask() {
 		    	
 		        	public void run() {
+		        		match.calculateHatchPointsR4541();
+		        		match.calculateCargoPointsR4541();
 						match.window.txtrCommandText.setText(match.bestMoveR4541());
 		    			
 		        	}

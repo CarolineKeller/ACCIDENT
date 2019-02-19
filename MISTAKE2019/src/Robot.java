@@ -2,10 +2,10 @@
 public class Robot {
 	
 	protected String teamName;
-	protected double hatchTime;
-	protected double cargoTime;
-	protected double climbTime;
-	protected int climbLevel;
+	private double hatchTime;
+	private double cargoTime;
+	private double climbTime;
+	private int climbLevel;
 	Strategy strategy;
 	
 	public Robot(String n, double h, double c, double t, int l) {

@@ -7,8 +7,8 @@ public class Match extends Strategy2 {
 	Robot r4541;
 	Robot r2;
 	Robot r3;
-	static int hatchPoints = 2;
-	static int cargoPoints = 3;
+	final int hatchPoints = 2;
+	final int cargoPoints = 3;
 	double cargoPointsPerSecond = 0;
 	double hatchPointsPerSecond = 0;
 	Strategy2 window;
@@ -69,22 +69,23 @@ public class Match extends Strategy2 {
 		if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches()) && window.leftHatchNum != 6 && window.leftCargoNum != 6){
 
 			if (possibleLeftRocketCargo >= 2) {
-				if (calculateHatchPointsR4541() > calculateCargoPointsR4541()) {
+				if ((hatchPointsPerSecond > cargoPointsPerSecond) && window.leftHatchNum != 6) {
 					return leftRocketHatch;
-				} else if (calculateHatchPointsR4541() < calculateCargoPointsR4541()) {
+				} else if (hatchPointsPerSecond < cargoPointsPerSecond) {
 					return leftRocketCargo;
 				} else {
 					return "Do a hatch or cargo";
 				}
-			} else {
+			} else if (possibleLeftRocketCargo > 2) {
+				return leftRocketHatch;
+			}else {
 				return leftRocketHatch;
 			}
 		}else if ((calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches()) < (calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketCargo()) && rightHatchNum != 6 && rightCargoNum != 6) {
 			if (possibleRightRocketCargo >= 2) {
-				if (calculateHatchPointsR4541() > calculateCargoPointsR4541()) {
+				if ((hatchPointsPerSecond > cargoPointsPerSecond) && rightHatchNum != 6) {
 					return rightRocketHatch;
-					
-				} else if (calculateHatchPointsR4541() < calculateCargoPointsR4541()) {
+				} else if ((hatchPointsPerSecond < cargoPointsPerSecond) && rightCargoNum != 6) {
 					return rightRocketCargo;
 				} else {
 					return "Do a hatch or cargo";
@@ -94,9 +95,9 @@ public class Match extends Strategy2 {
 			}
 		}else if (leftHatchNum == 6 && leftCargoNum == 6 && rightHatchNum == 6 && rightCargoNum == 6) {
 			if (possibleShipCargo >= 2) {
-				if (calculateHatchPointsR4541() > calculateCargoPointsR4541()) {
+				if (hatchPointsPerSecond > cargoPointsPerSecond) {
 					return shipHatch;
-				} else if (calculateHatchPointsR4541() < calculateCargoPointsR4541()) {
+				} else if (hatchPointsPerSecond < cargoPointsPerSecond) {
 					return shipCargo;
 				} else {
 					return "Do a hatch or cargo";
@@ -104,7 +105,11 @@ public class Match extends Strategy2 {
 			} else {
 				return shipHatch;
 			}
-		
+		/*}else if(timer == null) {
+			return "-";
+		}else if(r4541.getClimbTime() <= (5 + (Integer.parseInt(window.textArea.getText())))) {
+			return "climb";
+			*/
 		}else {
 			return "-";
 		}

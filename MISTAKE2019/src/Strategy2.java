@@ -19,7 +19,7 @@ import java.io.Serializable;
 import javax.swing.AbstractAction;
 
 
-public class Strategy2 extends Strategy implements Serializable{
+public class Strategy2 extends Robot implements Serializable{
 
 	/**
 	 * 
