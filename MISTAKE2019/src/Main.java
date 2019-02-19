@@ -60,18 +60,27 @@ public class Main extends Match{
 			String line = "";
 			br.readLine();
 			
+			String [][] myArray = new String[2][4];
+			
 			while ((line = br.readLine()) != null) {
 				String[] data = line.split(COMMA_DELIMITER);
 				
-				if(data.length > 0) {
+			/*	if(data.length > 0) {
 					r = new Robot((data[0]), (Double.parseDouble(data[1])), (Double.parseDouble(data[2])), (Double.parseDouble(data[3])), (Integer.parseInt(data[4])));
 					robotList.add(r);
+				}*/
+				
+				for(String str : data) {
+					String str_string  = str;
+					myArray[0][1] = str_string;
+					System.out.println(myArray[0][1]);
 				}
 			}
 			
-			for(Robot a : robotList) {
+		/*	for(Robot a : robotList) {
 				System.out.println("Team: " + a.getTeamName() + "  Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "   Climb Time: " + a.getClimbTime() + "   Climb Level: " + a.getClimbLevel() + " ");
 			}
+			*/
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
