@@ -43,9 +43,12 @@ public class Strategy2 extends Robot implements Serializable{
 	
 
 	double possibleLeftRocketHatches = 6;
+	double halfLeftRocketCargo = 0;
 	double possibleLeftRocketCargo = 0;
 	double possibleRightRocketCargo = 0;
+	double halfRightRocketCargo = 0;
 	double possibleShipCargo = 0;
+	double halfShipCargo = 0;
 	double possibleRightRocketHatches = 6;
 	double possibleShipHatches = 6;
 	
@@ -177,7 +180,7 @@ public class Strategy2 extends Robot implements Serializable{
 						leftHatchNum = 6;
 					}
 					leftHatchText.setText("" + leftHatchNum);
-					possibleLeftRocketCargo += 0.5;	
+					halfLeftRocketCargo += 0.5;	
 				}
 			});
 			btnNewButton.setBounds(12, 30, 81, 29);
@@ -232,7 +235,7 @@ public class Strategy2 extends Robot implements Serializable{
 						shipHatchNum = 8;
 					}
 					shipHatchText.setText("" + shipHatchNum);
-					possibleShipCargo += 0.5;
+					halfShipCargo += 0.5;
 				}
 			});
 			btnHatch.setBounds(10, 30, 81, 29);
@@ -286,7 +289,7 @@ public class Strategy2 extends Robot implements Serializable{
 						rightHatchNum = 6;
 					}
 					rightHatchText.setText("" + rightHatchNum);
-					possibleRightRocketCargo += 0.5;
+					halfRightRocketCargo += 0.5;
 				}
 			});
 			btnHatch_1.setBounds(12, 30, 81, 29);
@@ -469,15 +472,4 @@ public class Strategy2 extends Robot implements Serializable{
 		this.frame = frame;
 	}
 	
-	
-	
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
-	}
 }
-
