@@ -1,12 +1,12 @@
 
 public class Match extends Strategy2 {
 
-	Field myField;
+	Field myField = new Field();
 	// Alliance friendlyAlliance;
 	// Alliance enemyAlliance;
-	Robot r4541;
-	Robot r2;
-	Robot r3;
+	Robot r4541 = new Robot();
+	Robot r2 = new Robot();
+	Robot r3 = new Robot();
 	final int hatchPoints = 2;
 	final int cargoPoints = 3;
 	double cargoPointsPerSecond = 0;
