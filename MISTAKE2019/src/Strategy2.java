@@ -51,6 +51,7 @@ public class Strategy2 extends Robot implements Serializable{
 	double halfShipCargo = 0;
 	double possibleRightRocketHatches = 6;
 	double possibleShipHatches = 6;
+	int setInterval = 0;
 	
 	
 	/**
@@ -133,6 +134,7 @@ public class Strategy2 extends Robot implements Serializable{
 			    			
 			        	}
 			    	}, delay, period);
+			    	setInterval = setInterval();
 			}
 				
 			private final int setInterval() {
