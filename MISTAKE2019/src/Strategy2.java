@@ -122,7 +122,7 @@ public class Strategy2 extends Robot implements Serializable{
 					final int delay = 1000;
 					final int period = 1000;
 			    	timer = new Timer();
-			    	interval = Integer.parseInt(secs);
+			    	interval = Integer.parseInt("300");
 			    	textArea.setText(null);
 			    	textArea.setText(secs);
 
@@ -130,13 +130,13 @@ public class Strategy2 extends Robot implements Serializable{
 			    	
 			        	public void run() {
 			        		textArea.setText(null);
-			            	textArea.setText("" + setInterval());
+			            	textArea.setText("" + (setInterval() / 2));
+			            	setTime("" + ((setInterval() / 2) - 1));
 			        	}
-			        	public void run2() {
-			        		setTime("" + setInterval());
-			        	}
+			        	
+			        	
 			    	}, delay, period);
-			    	setInterval = setInterval();
+			    	
 			}
 				
 			private final int setInterval() {
