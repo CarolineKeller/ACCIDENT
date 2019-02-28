@@ -52,6 +52,7 @@ public class Strategy2 extends Robot implements Serializable{
 	double possibleRightRocketHatches = 6;
 	double possibleShipHatches = 6;
 	int setInterval = 0;
+	int time;
 	
 	
 	/**
@@ -118,7 +119,6 @@ public class Strategy2 extends Robot implements Serializable{
 					if ( timer != null ) 
 						return;
 					
-					
 					final int delay = 1000;
 					final int period = 1000;
 			    	timer = new Timer();
@@ -131,19 +131,17 @@ public class Strategy2 extends Robot implements Serializable{
 			        	public void run() {
 			        		textArea.setText(null);
 			            	textArea.setText("" + setInterval());
-			    			
+			        	}
+			        	public void run2() {
+			        		setTime("" + setInterval());
 			        	}
 			    	}, delay, period);
 			    	setInterval = setInterval();
 			}
 				
 			private final int setInterval() {
-				String red = textArea.getText();
 		    	if (interval == 1)
 		        	timer.cancel();
-				if (red == "0") {	
-					textArea.setForeground(Color.RED);
-				}
 		    	return --interval;
 				}
 			
@@ -473,5 +471,17 @@ public class Strategy2 extends Robot implements Serializable{
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
+	
+	public int getTime() {
+		return time;
+	}
+	
+	public void setTime(String t) {
+		if(textArea != null) {
+			time = Integer.parseInt(t);
+		}
+		return;
+	}
+
 	
 }
