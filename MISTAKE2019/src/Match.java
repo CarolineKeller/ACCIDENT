@@ -12,7 +12,6 @@ public class Match extends Strategy2 {
 	double cargoPointsPerSecond = 0;
 	double hatchPointsPerSecond = 0;
 	Strategy2 window;
-	//int time;
 
 	public Match() {
 	}
