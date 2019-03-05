@@ -32,10 +32,8 @@ public class Main extends Match{
 					}
 				}
 			});
-		
-		/*Robot r4541 = new Robot();
-		r4541.setHatchTime(Double.parseDouble(strategy.ourHatchTextField.getText()));
-		r4541.getHatchTime();
+		window.r4541.setHatchTime(Double.parseDouble(strategy.ourHatchTextField.getText()));
+		window.r4541.getHatchTime();
 		Robot r2;
 		Robot r3; */
 		Match match = new Match();
@@ -59,15 +57,16 @@ public class Main extends Match{
 			String line = "";
 			br.readLine();
 			
+			
 			myArray = new String[2][4];
 			
 			while ((line = br.readLine()) != null) {
 				String[] data = line.split(COMMA_DELIMITER);
 				
-			/*	if(data.length > 0) {
+				if(data.length > 0) {
 					r = new Robot((data[0]), (Double.parseDouble(data[1])), (Double.parseDouble(data[2])), (Double.parseDouble(data[3])), (Integer.parseInt(data[4])));
 					robotList.add(r);
-				}*/
+				}
 				
 				for(String str : data) {
 					String str_string  = str;
@@ -75,7 +74,7 @@ public class Main extends Match{
 					System.out.println(myArray[0][1]);
 					
 				}
-				/*match.r4541.setHatchTime((Double.parseDouble(myArray[0][1])));
+				/*match.r4541.setHatchTime((Double.parseDouble(myArray[0][0]) + (Double.parseDouble(data[1]))));
 				System.out.println(match.r4541.getHatchTime());
 				match.r4541.setCargoTime((Double.parseDouble(myArray[0][2])));
 				*/
@@ -98,7 +97,6 @@ public class Main extends Match{
 		
 	}
 		
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -111,29 +109,30 @@ public class Main extends Match{
 				match.window.getLeftCargoNum();
 				match.window.getRightHatchNum();
 				match.window.getRightCargoNum();
+				
 				{
-					String secs = "150";
 				final int delay = 1000;
 				final int period = 1000;
 		    	internalTimer = new Timer();
-		    	internalInterval = Integer.parseInt(secs);
+		    	internalInterval = 1000;
 
 
 		    	internalTimer.scheduleAtFixedRate(new TimerTask() {
 		    	
 		        	public void run() {
+		        		match.r4541.setHatchTime(18);
+		        		match.r4541.setCargoTime(18);
+		        		match.r4541.setClimbTime(100);
 		        		match.calculateHatchPointsR4541();
 		        		match.calculateCargoPointsR4541();
 						match.window.txtrCommandText.setText(match.bestMoveR4541());
 		    			
 		        	}
 		    	}, delay, period);
-		}
+				}
 				
 			}
 		});
-	
-
 		
 	}
 }

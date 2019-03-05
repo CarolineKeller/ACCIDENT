@@ -12,6 +12,7 @@ public class Match extends Strategy2 {
 	double cargoPointsPerSecond = 0;
 	double hatchPointsPerSecond = 0;
 	Strategy2 window;
+	//int time;
 
 	public Match() {
 	}
@@ -32,7 +33,7 @@ public class Match extends Strategy2 {
 	}
 	
 	public double calculatePossibleLeftRocketCargo() {
-		possibleLeftRocketCargo = (window.possibleLeftRocketCargo * 2) - window.leftCargoNum;
+		possibleLeftRocketCargo = (window.halfLeftRocketCargo * 2) - window.leftCargoNum;
 		return possibleLeftRocketCargo;
 	}
 	
@@ -42,7 +43,7 @@ public class Match extends Strategy2 {
 	}
 	
 	public double calculatePossibleRightRocketCargo() {
-		possibleRightRocketCargo = (window.possibleRightRocketCargo * 2) - window.rightCargoNum;
+		possibleRightRocketCargo = (window.halfRightRocketCargo * 2) - window.rightCargoNum;
 		return possibleRightRocketCargo;
 	}
 	
@@ -52,10 +53,16 @@ public class Match extends Strategy2 {
 	}
 	
 	public double calculatePossibleShipCargo() {
-		possibleShipCargo = (window.possibleShipCargo * 2) - window.shipCargoNum;
+		possibleShipCargo = (window.halfShipCargo * 2) - window.shipCargoNum;
 		return possibleShipCargo;
 	}
 	
+	public int timePassed() {
+		int timePassed = 150 - window.getTime();
+		return timePassed;
+	}
+	
+
 
 	public String bestMoveR4541() {
 		String leftRocketHatch = "Put a hatch on the left rocket";
@@ -65,23 +72,30 @@ public class Match extends Strategy2 {
 		String shipHatch = "Put a hatch on the cargo ship";
 		String shipCargo = "Put cargo in the cargo ship";
 		
-
-		if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches()) && window.leftHatchNum != 6 && window.leftCargoNum != 6){
+		r4541.setClimbTime(100);
+		getLeftHatchNum();
+		getLeftCargoNum();
+		getShipHatchNum();
+		getShipCargoNum();
+		getRightHatchNum();
+		getRightCargoNum();
+		
+		if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches())){
 
 			if (possibleLeftRocketCargo >= 2) {
-				if ((hatchPointsPerSecond > cargoPointsPerSecond) && window.leftHatchNum != 6) {
+				if ((hatchPointsPerSecond > cargoPointsPerSecond) && (window.leftHatchNum != 6)) {
 					return leftRocketHatch;
-				} else if (hatchPointsPerSecond < cargoPointsPerSecond) {
+				} else if ((hatchPointsPerSecond < cargoPointsPerSecond) && (window.leftCargoNum != 6)) {
 					return leftRocketCargo;
-				} else {
+				}else {
 					return "Do a hatch or cargo";
 				}
 			} else if (possibleLeftRocketCargo > 2) {
 				return leftRocketHatch;
-			}else {
+			}else if(window.leftHatchNum != 6){
 				return leftRocketHatch;
 			}
-		}else if ((calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches()) < (calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketCargo()) && rightHatchNum != 6 && rightCargoNum != 6) {
+		}else if ((calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches()) < (calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketCargo()) && (rightHatchNum != 6) && (rightCargoNum != 6)) {
 			if (possibleRightRocketCargo >= 2) {
 				if ((hatchPointsPerSecond > cargoPointsPerSecond) && rightHatchNum != 6) {
 					return rightRocketHatch;
@@ -105,14 +119,14 @@ public class Match extends Strategy2 {
 			} else {
 				return shipHatch;
 			}
-		/*}else if(timer == null) {
-			return "-";
-		}else if(r4541.getClimbTime() <= (5 + (Integer.parseInt(window.textArea.getText())))) {
+		}else if(leftHatchNum == 6 && leftCargoNum == 6 && rightHatchNum == 6 && rightCargoNum == 6 && shipHatchNum == 8 && shipCargoNum == 8) {
 			return "climb";
-			*/
+		}else if((r4541.getClimbTime()) >= window.getTime() && window.getTime() != 0) {
+				return "climb";
 		}else {
 			return "-";
 		}
+		return "-";
 
 	}
 }
