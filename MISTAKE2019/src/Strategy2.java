@@ -17,6 +17,9 @@ import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.io.Serializable;
 import javax.swing.AbstractAction;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import java.util.ArrayList;
 
 
 public class Strategy2 extends Robot implements Serializable{
@@ -40,8 +43,6 @@ public class Strategy2 extends Robot implements Serializable{
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
-	
-
 	double possibleLeftRocketHatches = 6;
 	double halfLeftRocketCargo = 0;
 	double possibleLeftRocketCargo = 0;
@@ -53,6 +54,21 @@ public class Strategy2 extends Robot implements Serializable{
 	double possibleShipHatches = 6;
 	int setInterval = 0;
 	int time;
+	public JTextField leftRocketTime;
+	public JTextField rightRocketTime;
+	JTextArea timeToComplete;
+	protected boolean sandstorm = true;
+	protected double timedHatchTime;
+	protected double timedCargoTime;
+	ArrayList<Double> hatchList = new ArrayList <>();
+	ArrayList<Double> cargoList = new ArrayList<>();
+	double hatchDone = 0;
+	double cargoDone = 0;
+	double hatchDoneSecs;
+	double cargoDoneSecs;
+	double previousHatchTime;
+	double previousCargoTime;
+	
 	
 	
 	/**
@@ -151,9 +167,8 @@ public class Strategy2 extends Robot implements Serializable{
 			buttonPanel.add(btnStartTimer);
 			
 		
-		
 		JPanel leftRocketPanel = new JPanel();
-		leftRocketPanel.setBounds(6, 89, 119, 116);
+		leftRocketPanel.setBounds(6, 89, 119, 156);
 		leftRocketPanel.setOpaque(false);
 		getFrame().getContentPane().add(leftRocketPanel);
 			leftRocketPanel.setLayout(null);
@@ -173,6 +188,7 @@ public class Strategy2 extends Robot implements Serializable{
 			leftRocketPanel.add(leftHatchText);
 		
 			JButton btnNewButton = new JButton("Hatch");
+			btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					leftHatchNum++;
@@ -181,9 +197,25 @@ public class Strategy2 extends Robot implements Serializable{
 					}
 					leftHatchText.setText("" + leftHatchNum);
 					halfLeftRocketCargo += 0.5;	
+					if(sandstorm == false) {
+						double hatchTime;
+						if (hatchList.size() == 0) {
+							previousHatchTime = 0;
+						}
+						if(previousHatchTime > (150 - getTime())) {
+							if(previousHatchTime > 150) {
+								previousHatchTime -= 150;
+							}
+							hatchTime = (150 - (previousHatchTime - getTime()));
+						}else {
+						hatchTime = (getTime() - previousHatchTime);
+						}
+						hatchList.add(hatchTime);
+						previousHatchTime += hatchTime;
+					}
 				}
 			});
-			btnNewButton.setBounds(12, 30, 81, 29);
+			btnNewButton.setBounds(12, 30, 85, 35);
 			btnNewButton.setBackground(Color.WHITE);
 			leftRocketPanel.add(btnNewButton);
 			
@@ -196,6 +228,7 @@ public class Strategy2 extends Robot implements Serializable{
 			leftRocketPanel.add(leftCargoText);
 		
 			JButton btnCargo = new JButton("Cargo");
+			btnCargo.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 			btnCargo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					leftCargoNum++;
@@ -203,13 +236,41 @@ public class Strategy2 extends Robot implements Serializable{
 						leftCargoNum = 6;
 					}
 					leftCargoText.setText("" + leftCargoNum);
+					if(sandstorm == false) {
+						double cargoTime;
+						if (cargoList.size() == 0) {
+							previousCargoTime = 0;
+						}
+						if(previousCargoTime > (150 - getTime())) {
+							if(previousCargoTime > 150) {
+								previousCargoTime -= 150;
+							}
+							cargoTime = (150 - (previousCargoTime - getTime()));
+						}else {
+						cargoTime = (getTime() - previousCargoTime);
+						}
+						cargoList.add(cargoTime);
+						previousCargoTime += cargoTime;
+					}
 				}
 			});
-			btnCargo.setBounds(12, 64, 81, 29);
+			btnCargo.setBounds(12, 64, 85, 35);
 			leftRocketPanel.add(btnCargo);
+			
+			leftRocketTime = new JTextField();
+			leftRocketTime.setBounds(6, 124, 107, 26);
+			leftRocketPanel.add(leftRocketTime);
+			leftRocketTime.setColumns(10);
+			
+			timeToComplete = new JTextArea("Time to Complete Rocket:");
+			timeToComplete.setForeground(Color.WHITE);
+			timeToComplete.setFont(new Font("Monospaced", Font.PLAIN, 12));
+			timeToComplete.setOpaque(false);
+			timeToComplete.setBounds(6, 111, 113, 16);
+			leftRocketPanel.add(timeToComplete);
 		
 		JPanel cargoShipPanel = new JPanel();
-		cargoShipPanel.setBounds(220, 147, 137, 110);
+		cargoShipPanel.setBounds(220, 134, 137, 123);
 		cargoShipPanel.setOpaque(false);
 		getFrame().getContentPane().add(cargoShipPanel);
 			cargoShipPanel.setLayout(null);
@@ -223,11 +284,12 @@ public class Strategy2 extends Robot implements Serializable{
 			JTextArea shipHatchText = new JTextArea("" + shipHatchNum);
 			shipHatchText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			shipHatchText.setForeground(Color.WHITE);
-			shipHatchText.setBounds(95, 30, 25, 39);
+			shipHatchText.setBounds(95, 37, 25, 32);
 			shipHatchText.setOpaque(false);
 			cargoShipPanel.add(shipHatchText);
 			
 			JButton btnHatch = new JButton("Hatch");
+			btnHatch.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 			btnHatch.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					shipHatchNum++;
@@ -236,19 +298,36 @@ public class Strategy2 extends Robot implements Serializable{
 					}
 					shipHatchText.setText("" + shipHatchNum);
 					halfShipCargo += 0.5;
+					if(sandstorm == false) {
+						double hatchTime;
+						if (hatchList.size() == 0) {
+							previousHatchTime = 0;
+						}
+						if(previousHatchTime > (150 - getTime())) {
+							if(previousHatchTime > 150) {
+								previousHatchTime -= 150;
+							}
+							hatchTime = (150 - (previousHatchTime - getTime()));
+						}else {
+						hatchTime = (getTime() - previousHatchTime);
+						}
+						hatchList.add(hatchTime);
+						previousHatchTime += hatchTime;
+					}
 				}
 			});
-			btnHatch.setBounds(10, 30, 81, 29);
+			btnHatch.setBounds(10, 30, 85, 35);
 			cargoShipPanel.add(btnHatch);
 			
 			JTextArea shipCargoText = new JTextArea("" + shipCargoNum);
 			shipCargoText.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 			shipCargoText.setForeground(Color.WHITE);
 			shipCargoText.setOpaque(false);
-			shipCargoText.setBounds(95, 64, 25, 35);
+			shipCargoText.setBounds(95, 72, 25, 27);
 			cargoShipPanel.add(shipCargoText);
 		
 			JButton btnCargo_1 = new JButton("Cargo");
+			btnCargo_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 			btnCargo_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					shipCargoNum++;
@@ -256,13 +335,29 @@ public class Strategy2 extends Robot implements Serializable{
 						shipCargoNum = 8;
 					}
 					shipCargoText.setText("" + shipCargoNum);
+					if(sandstorm == false) {
+						double cargoTime;
+						if (cargoList.size() == 0) {
+							previousCargoTime = 0;
+						}
+						if(previousCargoTime > (150 - getTime())) {
+							if(previousCargoTime > 150) {
+								previousCargoTime -= 150;
+							}
+							cargoTime = (150 - (previousCargoTime - getTime()));
+						}else {
+						cargoTime = (getTime() - previousCargoTime);
+						}
+						cargoList.add(cargoTime);
+						previousCargoTime += cargoTime;
+					}
 				}
 			});
-			btnCargo_1.setBounds(10, 64, 81, 29);
+			btnCargo_1.setBounds(10, 64, 85, 35);
 			cargoShipPanel.add(btnCargo_1);
 		
 		JPanel rightRocketPanel = new JPanel();
-		rightRocketPanel.setBounds(449, 89, 145, 116);
+		rightRocketPanel.setBounds(449, 89, 145, 156);
 		rightRocketPanel.setOpaque(false);
 		getFrame().getContentPane().add(rightRocketPanel);
 			rightRocketPanel.setLayout(null);
@@ -282,6 +377,7 @@ public class Strategy2 extends Robot implements Serializable{
 			rightRocketPanel.add(rightHatchText);
 		
 			JButton btnHatch_1 = new JButton("Hatch");
+			btnHatch_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 			btnHatch_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rightHatchNum++;
@@ -290,9 +386,25 @@ public class Strategy2 extends Robot implements Serializable{
 					}
 					rightHatchText.setText("" + rightHatchNum);
 					halfRightRocketCargo += 0.5;
+					if(sandstorm == false) {
+						double hatchTime;
+						if (hatchList.size() == 0) {
+							previousHatchTime = 0;
+						}
+						if(previousHatchTime > (150 - getTime())) {
+							if(previousHatchTime > 150) {
+								previousHatchTime -= 150;
+							}
+							hatchTime = (150 - (previousHatchTime - getTime()));
+						}else {
+						hatchTime = (getTime() - previousHatchTime);
+						}
+						hatchList.add(hatchTime);
+						previousHatchTime += hatchTime;
+					}
 				}
 			});
-			btnHatch_1.setBounds(12, 30, 81, 29);
+			btnHatch_1.setBounds(12, 30, 85, 35);
 			rightRocketPanel.add(btnHatch_1);
 			
 			JTextArea rightCargoText = new JTextArea("" + rightCargoNum);
@@ -303,6 +415,7 @@ public class Strategy2 extends Robot implements Serializable{
 			rightRocketPanel.add(rightCargoText);
 		
 			JButton btnCargo_2 = new JButton("Cargo");
+			btnCargo_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 			btnCargo_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rightCargoNum++;
@@ -310,10 +423,40 @@ public class Strategy2 extends Robot implements Serializable{
 						rightCargoNum = 6;
 					}
 					rightCargoText.setText("" + rightCargoNum);
+					if(sandstorm == false) {
+						double cargoTime;
+						if (cargoList.size() == 0) {
+							previousCargoTime = 0;
+						}
+						if(previousCargoTime > (150 - getTime())) {
+							if(previousCargoTime > 150) {
+								previousCargoTime -= 150;
+							}
+							cargoTime = (150 - (previousCargoTime - getTime()));
+						}else {
+						cargoTime = (getTime() - previousCargoTime);
+						}
+						cargoList.add(cargoTime);
+						previousCargoTime += cargoTime;
+					}
 				}
 			});
-			btnCargo_2.setBounds(12, 65, 81, 29);
+			btnCargo_2.setBounds(12, 65, 85, 35);
 			rightRocketPanel.add(btnCargo_2);
+			
+			rightRocketTime = new JTextField();
+			rightRocketTime.setBounds(12, 124, 130, 26);
+			rightRocketPanel.add(rightRocketTime);
+			rightRocketTime.setColumns(10);
+			
+			JTextArea txtrTimeToComplete = new JTextArea();
+			txtrTimeToComplete.setFont(new Font("Monospaced", Font.PLAIN, 12));
+			txtrTimeToComplete.setForeground(Color.WHITE);
+			txtrTimeToComplete.setText("Time to Complete");
+			txtrTimeToComplete.setOpaque(false);
+			txtrTimeToComplete.setBounds(12, 105, 127, 20);
+			rightRocketPanel.add(txtrTimeToComplete);
+			
 		
 		commandPanel = new JPanel();
 		commandPanel.setBounds(291, 6, 303, 59);
@@ -428,9 +571,27 @@ public class Strategy2 extends Robot implements Serializable{
 			
 			JLabel label = new JLabel("");
 			Image pics = new ImageIcon(this.getClass().getResource("/SpaceBkgrndMed.png")).getImage();
+			
+			JPanel panel = new JPanel();
+			panel.setBounds(178, 64, 137, 33);
+			panel.setOpaque(false);
+			frame.getContentPane().add(panel);
+			
+			JCheckBox chckbxSandstormOver = new JCheckBox("Sandstorm Over");
+			chckbxSandstormOver.setFont(new Font("Monospaced", Font.PLAIN, 14));
+			chckbxSandstormOver.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					sandstorm = false;
+				}
+			});
+			chckbxSandstormOver.setForeground(Color.WHITE);
+			chckbxSandstormOver.setVisible(true);
+			chckbxSandstormOver.setOpaque(false);
+			panel.add(chckbxSandstormOver);
 			label.setIcon(new ImageIcon(pics));
 			label.setBounds(0, 0, 600, 358);
 			getFrame().getContentPane().add(label);
+			
 			
 			
 	}
@@ -482,6 +643,22 @@ public class Strategy2 extends Robot implements Serializable{
 		}
 		return;
 	}
-
 	
+	public double setTimedHatchTime() {
+		double total = 0;
+		for(int i = 0; i < hatchList.size();i++) {
+			total += hatchList.get(i);
+		}
+		timedHatchTime = 150 - (total / hatchList.size());
+		return timedHatchTime;
+	}
+	
+	public double setTimedCargoTime() {
+		double total = 0;
+		for(int i = 0; i < cargoList.size();i++) {
+			total += cargoList.get(i);
+		}
+		timedCargoTime = 150 - (total / cargoList.size());
+		return timedCargoTime;
+	}
 }
