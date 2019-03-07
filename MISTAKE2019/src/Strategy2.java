@@ -57,15 +57,11 @@ public class Strategy2 extends Robot implements Serializable{
 	public JTextField leftRocketTime;
 	public JTextField rightRocketTime;
 	JTextArea timeToComplete;
-	protected boolean sandstorm = true;
+	protected boolean sandstormOver = false;
 	protected double timedHatchTime;
 	protected double timedCargoTime;
 	ArrayList<Double> hatchList = new ArrayList <>();
 	ArrayList<Double> cargoList = new ArrayList<>();
-	double hatchDone = 0;
-	double cargoDone = 0;
-	double hatchDoneSecs;
-	double cargoDoneSecs;
 	double previousHatchTime;
 	double previousCargoTime;
 	
@@ -197,7 +193,7 @@ public class Strategy2 extends Robot implements Serializable{
 					}
 					leftHatchText.setText("" + leftHatchNum);
 					halfLeftRocketCargo += 0.5;	
-					if(sandstorm == false) {
+					if(sandstormOver == true) {
 						double hatchTime;
 						if (hatchList.size() == 0) {
 							previousHatchTime = 0;
@@ -236,7 +232,7 @@ public class Strategy2 extends Robot implements Serializable{
 						leftCargoNum = 6;
 					}
 					leftCargoText.setText("" + leftCargoNum);
-					if(sandstorm == false) {
+					if(sandstormOver == true) {
 						double cargoTime;
 						if (cargoList.size() == 0) {
 							previousCargoTime = 0;
@@ -298,7 +294,7 @@ public class Strategy2 extends Robot implements Serializable{
 					}
 					shipHatchText.setText("" + shipHatchNum);
 					halfShipCargo += 0.5;
-					if(sandstorm == false) {
+					if(sandstormOver == true) {
 						double hatchTime;
 						if (hatchList.size() == 0) {
 							previousHatchTime = 0;
@@ -335,7 +331,7 @@ public class Strategy2 extends Robot implements Serializable{
 						shipCargoNum = 8;
 					}
 					shipCargoText.setText("" + shipCargoNum);
-					if(sandstorm == false) {
+					if(sandstormOver == true) {
 						double cargoTime;
 						if (cargoList.size() == 0) {
 							previousCargoTime = 0;
@@ -386,7 +382,7 @@ public class Strategy2 extends Robot implements Serializable{
 					}
 					rightHatchText.setText("" + rightHatchNum);
 					halfRightRocketCargo += 0.5;
-					if(sandstorm == false) {
+					if(sandstormOver == true) {
 						double hatchTime;
 						if (hatchList.size() == 0) {
 							previousHatchTime = 0;
@@ -423,7 +419,7 @@ public class Strategy2 extends Robot implements Serializable{
 						rightCargoNum = 6;
 					}
 					rightCargoText.setText("" + rightCargoNum);
-					if(sandstorm == false) {
+					if(sandstormOver == true) {
 						double cargoTime;
 						if (cargoList.size() == 0) {
 							previousCargoTime = 0;
@@ -569,25 +565,29 @@ public class Strategy2 extends Robot implements Serializable{
 			lblRobot_2.setBounds(38, 5, 61, 16);
 			panelRdBtn3.add(lblRobot_2);
 			
-			JLabel label = new JLabel("");
-			Image pics = new ImageIcon(this.getClass().getResource("/SpaceBkgrndMed.png")).getImage();
-			
 			JPanel panel = new JPanel();
 			panel.setBounds(178, 64, 137, 33);
 			panel.setOpaque(false);
 			frame.getContentPane().add(panel);
 			
-			JCheckBox chckbxSandstormOver = new JCheckBox("Sandstorm Over");
+			JCheckBox chckbxSandstormOver = new JCheckBox("Sandstorm Over", sandstormOver);
 			chckbxSandstormOver.setFont(new Font("Monospaced", Font.PLAIN, 14));
 			chckbxSandstormOver.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					sandstorm = false;
+					if(chckbxSandstormOver.isSelected()) {
+						sandstormOver = true;
+					}else {
+						sandstormOver = false;
+					}
 				}
 			});
 			chckbxSandstormOver.setForeground(Color.WHITE);
 			chckbxSandstormOver.setVisible(true);
 			chckbxSandstormOver.setOpaque(false);
 			panel.add(chckbxSandstormOver);
+			
+			JLabel label = new JLabel("");
+			Image pics = new ImageIcon(this.getClass().getResource("/SpaceBkgrndMed.png")).getImage();
 			label.setIcon(new ImageIcon(pics));
 			label.setBounds(0, 0, 600, 358);
 			getFrame().getContentPane().add(label);
