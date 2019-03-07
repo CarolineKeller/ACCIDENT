@@ -8,7 +8,7 @@ import java.util.TimerTask;
 import java.io.BufferedReader;
 
 
-public class Main extends Match{
+public class Main extends Rocket{
 	
 	Score currScore;
 	static int hatchPoints = 2;
@@ -35,9 +35,7 @@ public class Main extends Match{
 		window.r4541.setHatchTime(Double.parseDouble(strategy.ourHatchTextField.getText()));
 		window.r4541.getHatchTime();
 		Robot r2;
-		Robot r3; */
-		Match match = new Match();
-		/*
+		Robot r3; *
 		Match tempState;
 		Score myScore = new Score();
 		
@@ -58,22 +56,29 @@ public class Main extends Match{
 			br.readLine();
 			
 			
-			myArray = new String[2][4];
+			myArray = new String[3][5];
+			
+			int row = 0;
+			int col = 0;
 			
 			while ((line = br.readLine()) != null) {
 				String[] data = line.split(COMMA_DELIMITER);
 				
 				if(data.length > 0) {
-					r = new Robot((data[0]), (Double.parseDouble(data[1])), (Double.parseDouble(data[2])), (Double.parseDouble(data[3])), (Integer.parseInt(data[4])));
+					r = new Robot((data[0]), 
+							(Double.parseDouble(data[1])), (Double.parseDouble(data[2])), (Double.parseDouble(data[3])), (Integer.parseInt(data[4])));
 					robotList.add(r);
 				}
 				
 				for(String str : data) {
 					String str_string  = str;
-					myArray[0][1] = str_string;
-					System.out.println(myArray[0][1]);
+					myArray[row][col] = str_string;
 					
+				//	System.out.println(myArray[row][col]);
+					col++;
 				}
+				row++;
+				col = 0;
 				/*match.r4541.setHatchTime((Double.parseDouble(myArray[0][0]) + (Double.parseDouble(data[1]))));
 				System.out.println(match.r4541.getHatchTime());
 				match.r4541.setCargoTime((Double.parseDouble(myArray[0][2])));
@@ -81,7 +86,9 @@ public class Main extends Match{
 			}
 			
 		/*	for(Robot a : robotList) {
-				System.out.println("Team: " + a.getTeamName() + "  Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "   Climb Time: " + a.getClimbTime() + "   Climb Level: " + a.getClimbLevel() + " ");
+				System.out.println("Team: " + a.getTeamName() + "  
+				Hatch Time: " + a.getHatchTime() + "  Cargo Time: " + a.getCargoTime() + "   
+				Climb Time: " + a.getClimbTime() + "   Climb Level: " + a.getClimbLevel() + " ");
 			}
 			*/
 			
@@ -96,10 +103,14 @@ public class Main extends Match{
 			}
 		
 	}
+		Match match = new Match();
+		Rocket leftRocket = new Rocket(match.possibleLeftRocketHatches, match.possibleLeftRocketCargo);
+		Rocket rightRocket = new Rocket(match.possibleRightRocketHatches, match.possibleRightRocketCargo);
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					match.window = new Strategy2();
 					match.window.getFrame().setVisible(true);
 				} catch (Exception e) {
@@ -109,23 +120,42 @@ public class Main extends Match{
 				match.window.getLeftCargoNum();
 				match.window.getRightHatchNum();
 				match.window.getRightCargoNum();
-				
 				{
 				final int delay = 1000;
 				final int period = 1000;
 		    	internalTimer = new Timer();
-		    	internalInterval = 1000;
+		    	internalInterval = 3000;
 
 
 		    	internalTimer.scheduleAtFixedRate(new TimerTask() {
 		    	
 		        	public void run() {
-		        		match.r4541.setHatchTime(18);
+		        		match.window.setTimedHatchTime();
+		        		match.window.setTimedCargoTime();
+		        		
+		        		leftRocket.setRocketHatch(match.window.possibleLeftRocketHatches);
+		        		leftRocket.setRocketCargo(match.window.possibleLeftRocketCargo);
+		        		rightRocket.setRocketHatch(match.window.possibleRightRocketHatches);
+		        		rightRocket.setRocketCargo(match.window.possibleRightRocketCargo);
+		        		
+		        		match.r4541.setHatchTime(match.window.timedHatchTime);
 		        		match.r4541.setCargoTime(18);
-		        		match.r4541.setClimbTime(100);
+		        		match.r4541.setClimbTime(Double.parseDouble(myArray[0][3]));
 		        		match.calculateHatchPointsR4541();
 		        		match.calculateCargoPointsR4541();
+		        		
+		        		match.calculatePossibleLeftRocketHatches();
+		        		match.calculatePossibleLeftRocketCargo();
+		        		match.calculatePossibleShipHatches();
+		        		match.calculatePossibleShipCargo();
+		        		match.calculatePossibleRightRocketHatches();
+		        		match.calculatePossibleRightRocketCargo();
+		        		
 						match.window.txtrCommandText.setText(match.bestMoveR4541());
+						String l = leftRocket.calculateCompletionTime(match.calculatePossibleLeftRocketHatches(), match.calculatePossibleLeftRocketCargo(), match.window.timedHatchTime, match.window.timedCargoTime) + " seconds";
+						match.window.leftRocketTime.setText(l);
+						String r = rightRocket.calculateCompletionTime(match.calculatePossibleRightRocketHatches(), match.calculatePossibleRightRocketCargo(), match.window.timedHatchTime, match.window.timedCargoTime) + "seconds";
+						match.window.rightRocketTime.setText(r);
 		    			
 		        	}
 		    	}, delay, period);
@@ -136,3 +166,4 @@ public class Main extends Match{
 		
 	}
 }
+
