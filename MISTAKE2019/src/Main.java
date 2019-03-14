@@ -132,13 +132,13 @@ public class Main extends Rocket{
 		        		match.r4541.setClimbTime(Double.parseDouble(myArray[0][3]));
 		        		match.calculateHatchPointsR4541();
 		        		match.calculateCargoPointsR4541();
-		        		match.r2.setTeamName(myArray[1][0]);
+		        		match.r2.setTeamName(myArray[0][1]);
 		        		match.r2.setHatchTime(Double.parseDouble(myArray[1][1]));
 		        		match.r2.setCargoTime(Double.parseDouble(myArray[1][2]));
 		        		match.r2.setClimbTime(Double.parseDouble(myArray[1][3]));
 		        		match.calculateHatchPointsR2();
 		        		match.calculateCargoPointsR2();
-		        		match.r2.setTeamName(myArray[2][0]);
+		        		match.r3.setTeamName(myArray[2][0]);
 		        		match.r3.setHatchTime(Double.parseDouble(myArray[2][1]));
 		        		match.r3.setCargoTime(Double.parseDouble(myArray[2][2]));
 		        		match.r3.setClimbTime(Double.parseDouble(myArray[2][3]));
