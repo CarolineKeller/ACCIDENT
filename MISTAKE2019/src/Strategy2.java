@@ -64,7 +64,12 @@ public class Strategy2 extends Robot implements Serializable{
 	ArrayList<Double> cargoList = new ArrayList<>();
 	double previousHatchTime;
 	double previousCargoTime;
-	
+	protected double timedShipHatchTime;
+	protected double timedShipCargoTime;
+	ArrayList<Double> shipHatchList = new ArrayList<>();
+	ArrayList<Double> shipCargoList = new ArrayList<>();
+	double previousShipHatchTime;
+	double previousShipCargoTime;
 	
 	
 	/**
@@ -198,11 +203,11 @@ public class Strategy2 extends Robot implements Serializable{
 						if (hatchList.size() == 0) {
 							previousHatchTime = 0;
 						}
-						if(previousHatchTime > (150 - getTime())) {
-							if(previousHatchTime > 150) {
-								previousHatchTime -= 150;
+						if(previousHatchTime > (135 - getTime())) {
+							if(previousHatchTime > 135) {
+								previousHatchTime -= 135;
 							}
-							hatchTime = (150 - (previousHatchTime - getTime()));
+							hatchTime = (135 - (previousHatchTime - getTime()));
 						}else {
 						hatchTime = (getTime() - previousHatchTime);
 						}
@@ -237,11 +242,11 @@ public class Strategy2 extends Robot implements Serializable{
 						if (cargoList.size() == 0) {
 							previousCargoTime = 0;
 						}
-						if(previousCargoTime > (150 - getTime())) {
-							if(previousCargoTime > 150) {
-								previousCargoTime -= 150;
+						if(previousCargoTime > (135 - getTime())) {
+							if(previousCargoTime > 135) {
+								previousCargoTime -= 135;
 							}
-							cargoTime = (150 - (previousCargoTime - getTime()));
+							cargoTime = (135 - (previousCargoTime - getTime()));
 						}else {
 						cargoTime = (getTime() - previousCargoTime);
 						}
@@ -296,19 +301,19 @@ public class Strategy2 extends Robot implements Serializable{
 					halfShipCargo += 0.5;
 					if(sandstormOver == true) {
 						double hatchTime;
-						if (hatchList.size() == 0) {
-							previousHatchTime = 0;
+						if (shipHatchList.size() == 0) {
+							previousShipHatchTime = 0;
 						}
-						if(previousHatchTime > (150 - getTime())) {
-							if(previousHatchTime > 150) {
-								previousHatchTime -= 150;
+						if(previousShipHatchTime > (135 - getTime())) {
+							if(previousShipHatchTime > 135) {
+								previousShipHatchTime -= 135;
 							}
-							hatchTime = (150 - (previousHatchTime - getTime()));
+							hatchTime = (135 - (previousShipHatchTime - getTime()));
 						}else {
-						hatchTime = (getTime() - previousHatchTime);
+						hatchTime = (getTime() - previousShipHatchTime);
 						}
-						hatchList.add(hatchTime);
-						previousHatchTime += hatchTime;
+						shipHatchList.add(hatchTime);
+						previousShipHatchTime += hatchTime;
 					}
 				}
 			});
@@ -333,19 +338,19 @@ public class Strategy2 extends Robot implements Serializable{
 					shipCargoText.setText("" + shipCargoNum);
 					if(sandstormOver == true) {
 						double cargoTime;
-						if (cargoList.size() == 0) {
-							previousCargoTime = 0;
+						if (shipCargoList.size() == 0) {
+							previousShipCargoTime = 0;
 						}
-						if(previousCargoTime > (150 - getTime())) {
-							if(previousCargoTime > 150) {
-								previousCargoTime -= 150;
+						if(previousShipCargoTime > (135 - getTime())) {
+							if(previousShipCargoTime > 135) {
+								previousShipCargoTime -= 135;
 							}
-							cargoTime = (150 - (previousCargoTime - getTime()));
+							cargoTime = (135 - (previousShipCargoTime - getTime()));
 						}else {
-						cargoTime = (getTime() - previousCargoTime);
+						cargoTime = (getTime() - previousShipCargoTime);
 						}
-						cargoList.add(cargoTime);
-						previousCargoTime += cargoTime;
+						shipCargoList.add(cargoTime);
+						previousShipCargoTime += cargoTime;
 					}
 				}
 			});
@@ -387,11 +392,11 @@ public class Strategy2 extends Robot implements Serializable{
 						if (hatchList.size() == 0) {
 							previousHatchTime = 0;
 						}
-						if(previousHatchTime > (150 - getTime())) {
-							if(previousHatchTime > 150) {
-								previousHatchTime -= 150;
+						if(previousHatchTime > (135 - getTime())) {
+							if(previousHatchTime > 135) {
+								previousHatchTime -= 135;
 							}
-							hatchTime = (150 - (previousHatchTime - getTime()));
+							hatchTime = (135 - (previousHatchTime - getTime()));
 						}else {
 						hatchTime = (getTime() - previousHatchTime);
 						}
@@ -424,11 +429,11 @@ public class Strategy2 extends Robot implements Serializable{
 						if (cargoList.size() == 0) {
 							previousCargoTime = 0;
 						}
-						if(previousCargoTime > (150 - getTime())) {
-							if(previousCargoTime > 150) {
-								previousCargoTime -= 150;
+						if(previousCargoTime > (135 - getTime())) {
+							if(previousCargoTime > 135) {
+								previousCargoTime -= 135;
 							}
-							cargoTime = (150 - (previousCargoTime - getTime()));
+							cargoTime = (135 - (previousCargoTime - getTime()));
 						}else {
 						cargoTime = (getTime() - previousCargoTime);
 						}
@@ -455,7 +460,7 @@ public class Strategy2 extends Robot implements Serializable{
 			
 		
 		commandPanel = new JPanel();
-		commandPanel.setBounds(291, 6, 303, 59);
+		commandPanel.setBounds(291, 6, 303, 71);
 		getFrame().getContentPane().add(commandPanel);
 		commandPanel.setLayout(null);
 		
@@ -467,7 +472,7 @@ public class Strategy2 extends Robot implements Serializable{
 		
 			txtrCommandText = new JTextArea();
 			txtrCommandText.setEditable(false);
-			txtrCommandText.setBounds(0, 17, 303, 42);
+			txtrCommandText.setBounds(0, 17, 303, 54);
 			commandPanel.add(txtrCommandText);
 		
 		JPanel panelRdBtn1 = new JPanel();
@@ -566,7 +571,7 @@ public class Strategy2 extends Robot implements Serializable{
 			panelRdBtn3.add(lblRobot_2);
 			
 			JPanel panel = new JPanel();
-			panel.setBounds(178, 64, 137, 33);
+			panel.setBounds(162, 66, 137, 39);
 			panel.setOpaque(false);
 			frame.getContentPane().add(panel);
 			
@@ -649,7 +654,7 @@ public class Strategy2 extends Robot implements Serializable{
 		for(int i = 0; i < hatchList.size();i++) {
 			total += hatchList.get(i);
 		}
-		timedHatchTime = 150 - (total / hatchList.size());
+		timedHatchTime = 135 - (total / hatchList.size());
 		return timedHatchTime;
 	}
 	
@@ -658,7 +663,25 @@ public class Strategy2 extends Robot implements Serializable{
 		for(int i = 0; i < cargoList.size();i++) {
 			total += cargoList.get(i);
 		}
-		timedCargoTime = 150 - (total / cargoList.size());
+		timedCargoTime = 135 - (total / cargoList.size());
 		return timedCargoTime;
+	}
+	
+	public double setTimedShipHatchTime() {
+		double total = 0;
+		for(int i = 0; i < shipHatchList.size();i++) {
+			total += shipHatchList.get(i);
+		}
+		timedShipHatchTime = 135 - (total / shipHatchList.size());
+		return timedShipHatchTime;
+	}
+	
+	public double setTimedShipCargoTime() {
+		double total = 0;
+		for(int i = 0; i < shipCargoList.size();i++) {
+			total += shipCargoList.get(i);
+		}
+		timedShipCargoTime = 135 - (total / shipCargoList.size());
+		return timedShipCargoTime;
 	}
 }
