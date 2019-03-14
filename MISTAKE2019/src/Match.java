@@ -103,7 +103,9 @@ public class Match extends Strategy2 {
 		getRightHatchNum();
 		getRightCargoNum();
 		
-		if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches())){
+		if (window.rdbtnR4541Defend.isSelected() || window.rdbtnR4541NotWorking.isSelected()) {
+			return "-";
+		}else if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches())){
 
 			if (possibleLeftRocketCargo >= 2) {
 				if ((hatchPointsPerSecondR4541 > cargoPointsPerSecondR4541) && (window.leftHatchNum != 6)) {
@@ -169,8 +171,10 @@ public class Match extends Strategy2 {
 		getRightHatchNum();
 		getRightCargoNum();
 		
-		if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches())){
-
+		if (window.rdbtnR2Defended.isSelected() || window.rdbtnR2NotWorking.isSelected()) {
+			return "-";
+		}else if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches())){
+		
 			if (possibleLeftRocketCargo >= 2) {
 				if ((hatchPointsPerSecondR2 > cargoPointsPerSecondR2) && (window.leftHatchNum != 6)) {
 					return r + ": " + leftRocketHatch;
@@ -235,7 +239,9 @@ public class Match extends Strategy2 {
 		getRightHatchNum();
 		getRightCargoNum();
 		
-		if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches())){
+		if (window.rdbtnR3Defended.isSelected() || window.rdbtnR3NotWorking.isSelected()) {
+			return "-";
+		}else if ((calculatePossibleLeftRocketCargo() + calculatePossibleLeftRocketHatches()) < (calculatePossibleRightRocketCargo() + calculatePossibleRightRocketHatches())){
 
 			if (possibleLeftRocketCargo >= 2) {
 				if ((hatchPointsPerSecondR3 > cargoPointsPerSecondR3) && (window.leftHatchNum != 6)) {
