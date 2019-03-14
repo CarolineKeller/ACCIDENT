@@ -33,11 +33,24 @@ public class Rocket {
 		return;
 	}
 	
-	public double calculateCompletionTime(double rh, double rc, double h, double c) {
+	public double calculateCompletionTime(double rh, double rc, double h, double c, double ht, double ct) {
 		rocketHatch = rh;
+		if(rc == 0 && rh == 6) {
+			rc += 6;
+		}
 		rocketCargo = rc;
-		double hatchTimeToCompletion = rocketHatch * h;
-		double cargoTimeToCompletion = rocketCargo * c;
+		double hatchTimeToCompletion = 0;
+		if(h > 0) {
+			hatchTimeToCompletion = rocketHatch * h;
+		}else if(hatchTimeToCompletion == 0) {
+			hatchTimeToCompletion = rocketHatch * ht;
+		}
+		double cargoTimeToCompletion = 0;
+		if(c > 0) {
+			cargoTimeToCompletion = rocketCargo * c;
+		}else if(cargoTimeToCompletion == 0) {
+			cargoTimeToCompletion = rocketCargo * ct;
+		}
 		completionTime = hatchTimeToCompletion + cargoTimeToCompletion;
 		return completionTime;
 	}
