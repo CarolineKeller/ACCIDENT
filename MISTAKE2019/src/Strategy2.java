@@ -40,6 +40,12 @@ public class Strategy2 extends Robot implements Serializable{
 	protected int shipCargoNum = 0;
 	protected int rightHatchNum = 0;
 	protected int rightCargoNum = 0;
+	protected JRadioButton rdbtnR4541Defend;
+	protected JRadioButton rdbtnR4541NotWorking;
+	protected JRadioButton rdbtnR2Defended;
+	protected JRadioButton rdbtnR2NotWorking;
+	protected JRadioButton rdbtnR3Defended;
+	protected JRadioButton rdbtnR3NotWorking;
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
@@ -481,17 +487,17 @@ public class Strategy2 extends Robot implements Serializable{
 		getFrame().getContentPane().add(panelRdBtn1);
 		panelRdBtn1.setLayout(null);
 		
-			JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Defended");
-			rdbtnNewRadioButton_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
-			buttonGroup1.add(rdbtnNewRadioButton_1);
-			rdbtnNewRadioButton_1.setBounds(2, 16, 141, 23);
-			panelRdBtn1.add(rdbtnNewRadioButton_1);
+			rdbtnR4541Defend = new JRadioButton("Defended");
+			rdbtnR4541Defend.setFont(new Font("Monospaced", Font.PLAIN, 14));
+			buttonGroup1.add(rdbtnR4541Defend);
+			rdbtnR4541Defend.setBounds(2, 16, 141, 23);
+			panelRdBtn1.add(rdbtnR4541Defend);
 		
-			JRadioButton rdbtnNotWorking = new JRadioButton("Not Working");
-			rdbtnNotWorking.setFont(new Font("Monospaced", Font.PLAIN, 14));
-			buttonGroup1.add(rdbtnNotWorking);
-			rdbtnNotWorking.setBounds(2, 33, 129, 23);
-			panelRdBtn1.add(rdbtnNotWorking);
+			rdbtnR4541NotWorking = new JRadioButton("Not Working");
+			rdbtnR4541NotWorking.setFont(new Font("Monospaced", Font.PLAIN, 14));
+			buttonGroup1.add(rdbtnR4541NotWorking);
+			rdbtnR4541NotWorking.setBounds(2, 33, 129, 23);
+			panelRdBtn1.add(rdbtnR4541NotWorking);
 		
 			JRadioButton rdbtnNewRadioButton = new JRadioButton("Normal");
 			rdbtnNewRadioButton.setFont(new Font("Monospaced", Font.PLAIN, 14));
@@ -510,19 +516,19 @@ public class Strategy2 extends Robot implements Serializable{
 		getFrame().getContentPane().add(panelRdBtn2);
 		panelRdBtn2.setLayout(null);
 		
-			JRadioButton rdbtnNotWorking_1 = new JRadioButton("Not Working");
-			rdbtnNotWorking_1.setForeground(Color.WHITE);
-			rdbtnNotWorking_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
-			buttonGroup2.add(rdbtnNotWorking_1);
-			rdbtnNotWorking_1.setBounds(15, 33, 141, 23);
-			panelRdBtn2.add(rdbtnNotWorking_1);
+			rdbtnR2NotWorking = new JRadioButton("Not Working");
+			rdbtnR2NotWorking.setForeground(Color.WHITE);
+			rdbtnR2NotWorking.setFont(new Font("Monospaced", Font.PLAIN, 14));
+			buttonGroup2.add(rdbtnR2NotWorking);
+			rdbtnR2NotWorking.setBounds(15, 33, 141, 23);
+			panelRdBtn2.add(rdbtnR2NotWorking);
 		
-			JRadioButton rdbtnDefended = new JRadioButton("Defended");
-			rdbtnDefended.setForeground(Color.WHITE);
-			rdbtnDefended.setFont(new Font("Monospaced", Font.PLAIN, 14));
-			buttonGroup2.add(rdbtnDefended);
-			rdbtnDefended.setBounds(15, 16, 141, 23);
-			panelRdBtn2.add(rdbtnDefended);
+			rdbtnR2Defended = new JRadioButton("Defended");
+			rdbtnR2Defended.setForeground(Color.WHITE);
+			rdbtnR2Defended.setFont(new Font("Monospaced", Font.PLAIN, 14));
+			buttonGroup2.add(rdbtnR2Defended);
+			rdbtnR2Defended.setBounds(15, 16, 141, 23);
+			panelRdBtn2.add(rdbtnR2Defended);
 		
 			JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Normal");
 			rdbtnNewRadioButton_2.setForeground(Color.WHITE);
@@ -543,12 +549,12 @@ public class Strategy2 extends Robot implements Serializable{
 		getFrame().getContentPane().add(panelRdBtn3);
 		panelRdBtn3.setLayout(null);
 		
-			JRadioButton rdbtnDefended_1 = new JRadioButton("Defended");
-			rdbtnDefended_1.setForeground(Color.WHITE);
-			rdbtnDefended_1.setFont(new Font("Monospaced", Font.PLAIN, 14));
-			buttonGroup3.add(rdbtnDefended_1);
-			rdbtnDefended_1.setBounds(6, 16, 115, 23);
-			panelRdBtn3.add(rdbtnDefended_1);
+			rdbtnR3Defended = new JRadioButton("Defended");
+			rdbtnR3Defended.setForeground(Color.WHITE);
+			rdbtnR3Defended.setFont(new Font("Monospaced", Font.PLAIN, 14));
+			buttonGroup3.add(rdbtnR3Defended);
+			rdbtnR3Defended.setBounds(6, 16, 115, 23);
+			panelRdBtn3.add(rdbtnR3Defended);
 		
 			JRadioButton rdbtnNormal = new JRadioButton("Normal");
 			rdbtnNormal.setForeground(Color.WHITE);
@@ -557,12 +563,12 @@ public class Strategy2 extends Robot implements Serializable{
 			rdbtnNormal.setBounds(6, 51, 115, 23);
 			panelRdBtn3.add(rdbtnNormal);
 		
-			JRadioButton rdbtnNotWorking_2 = new JRadioButton("Not Working");
-			rdbtnNotWorking_2.setForeground(Color.WHITE);
-			rdbtnNotWorking_2.setFont(new Font("Monospaced", Font.PLAIN, 14));
-			buttonGroup3.add(rdbtnNotWorking_2);
-			rdbtnNotWorking_2.setBounds(6, 33, 133, 23);
-			panelRdBtn3.add(rdbtnNotWorking_2);
+			rdbtnR3NotWorking = new JRadioButton("Not Working");
+			rdbtnR3NotWorking.setForeground(Color.WHITE);
+			rdbtnR3NotWorking.setFont(new Font("Monospaced", Font.PLAIN, 14));
+			buttonGroup3.add(rdbtnR3NotWorking);
+			rdbtnR3NotWorking.setBounds(6, 33, 133, 23);
+			panelRdBtn3.add(rdbtnR3NotWorking);
 			
 			JLabel lblRobot_2 = new JLabel("Robot 3");
 			lblRobot_2.setFont(new Font("Monospaced", Font.PLAIN, 14));
