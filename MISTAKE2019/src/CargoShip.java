@@ -1,11 +1,11 @@
 
 public class CargoShip {
 
-	protected int shipHatch;
-	protected int shipCargo;
+	protected double shipHatch;
+	protected double shipCargo;
+	protected double completionTime;
 	
-	
-	public CargoShip(int sh, int sc) {
+	public CargoShip(double sh, double sc) {
 		shipHatch = sh;
 		shipCargo = sc;
 	}
@@ -18,21 +18,41 @@ public class CargoShip {
 		
 	}
 	
-	public int getShipHatch() {
+	public double getShipHatch() {
 		return shipHatch;
 	}
 	
-	public void setShipHatch(int sh) {
+	public void setShipHatch(double sh) {
 		shipHatch = sh;
 	}
 	
-	public int getShipCargo() {
+	public double getShipCargo() {
 		return shipCargo;
 	}
 	
-	public void setShipCargo(int sc) {
+	public void setShipCargo(double sc) {
 		shipCargo = sc;
 		return;
+	}
+	
+	public double calculateCompletionTime(double rh, double rc, double h, double c, double ht, double ct) {
+		shipHatch = rh;
+		shipCargo = rc;
+		double hatchTimeToCompletion = 0;
+		if(h > 0) {
+			hatchTimeToCompletion = shipHatch * h;
+		}else if(hatchTimeToCompletion == 0) {
+			hatchTimeToCompletion = shipHatch * ht;
+		}
+		double cargoTimeToCompletion = 0;
+		if(c > 0) {
+			cargoTimeToCompletion = shipCargo * c;
+		}else if(cargoTimeToCompletion == 0) {
+			cargoTimeToCompletion = shipCargo * ct;
+		}
+	
+		completionTime = hatchTimeToCompletion + cargoTimeToCompletion;
+		return completionTime;
 	}
 	
 	
