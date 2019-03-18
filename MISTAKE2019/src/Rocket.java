@@ -42,15 +42,15 @@ public class Rocket {
 		double hatchTimeToCompletion = 0;
 		if(h > 0) {
 			hatchTimeToCompletion = rocketHatch * h;
-		}else if(hatchTimeToCompletion == 0) {
-			hatchTimeToCompletion = rocketHatch * ht;
+		//}else if(hatchTimeToCompletion == 0) {
+		//	hatchTimeToCompletion = rocketHatch * ht;
 		}
 		double cargoTimeToCompletion = 0;
-		if(c > 0) {
+		//if(c > 0) {
 			cargoTimeToCompletion = rocketCargo * c;
-		}else if(cargoTimeToCompletion == 0) {
-			cargoTimeToCompletion = rocketCargo * ct;
-		}
+		//}else if(cargoTimeToCompletion == 0) {
+		//	cargoTimeToCompletion = rocketCargo * ct;
+		//}
 		completionTime = hatchTimeToCompletion + cargoTimeToCompletion;
 		return completionTime;
 	}

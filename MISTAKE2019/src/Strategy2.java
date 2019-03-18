@@ -33,7 +33,7 @@ public class Strategy2 extends Robot implements Serializable{
 	protected JPanel commandPanel;
 	static int interval;
 	static Timer timer;
-	public String secs = "150";
+	public String secs = "135";
 	protected int leftHatchNum = 0;
 	protected int leftCargoNum = 0;
 	protected int shipHatchNum = 0;
@@ -76,6 +76,7 @@ public class Strategy2 extends Robot implements Serializable{
 	ArrayList<Double> shipCargoList = new ArrayList<>();
 	double previousShipHatchTime;
 	double previousShipCargoTime;
+	protected JTextField textField;
 	
 	
 	/**
@@ -125,8 +126,8 @@ public class Strategy2 extends Robot implements Serializable{
 			JButton btnReset = new JButton("RESET");
 			btnReset.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					secs = "150";
-					interval = 150;
+					secs = "135";
+					interval = 135;
 					textArea.setText(null);
 					textArea.setText("-");
 					timer.cancel();
@@ -145,7 +146,7 @@ public class Strategy2 extends Robot implements Serializable{
 					final int delay = 1000;
 					final int period = 1000;
 			    	timer = new Timer();
-			    	interval = Integer.parseInt("300");
+			    	interval = Integer.parseInt("270");
 			    	textArea.setText(null);
 			    	textArea.setText(secs);
 
@@ -277,7 +278,7 @@ public class Strategy2 extends Robot implements Serializable{
 			leftRocketPanel.add(timeToComplete);
 		
 		JPanel cargoShipPanel = new JPanel();
-		cargoShipPanel.setBounds(220, 134, 137, 123);
+		cargoShipPanel.setBounds(219, 130, 137, 140);
 		cargoShipPanel.setOpaque(false);
 		getFrame().getContentPane().add(cargoShipPanel);
 			cargoShipPanel.setLayout(null);
@@ -362,6 +363,17 @@ public class Strategy2 extends Robot implements Serializable{
 			});
 			btnCargo_1.setBounds(10, 64, 85, 35);
 			cargoShipPanel.add(btnCargo_1);
+			
+			JLabel lblNewLabel = new JLabel("Time to Complete");
+			lblNewLabel.setFont(new Font("Monospaced", Font.PLAIN, 12));
+			lblNewLabel.setForeground(Color.WHITE);
+			lblNewLabel.setBounds(10, 101, 122, 16);
+			cargoShipPanel.add(lblNewLabel);
+			
+			textField = new JTextField();
+			textField.setBounds(0, 114, 130, 20);
+			cargoShipPanel.add(textField);
+			textField.setColumns(10);
 		
 		JPanel rightRocketPanel = new JPanel();
 		rightRocketPanel.setBounds(449, 89, 145, 156);

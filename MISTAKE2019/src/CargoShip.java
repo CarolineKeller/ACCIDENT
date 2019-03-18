@@ -39,17 +39,17 @@ public class CargoShip {
 		shipHatch = rh;
 		shipCargo = rc;
 		double hatchTimeToCompletion = 0;
-		if(h > 0) {
+		//if(h > 0) {
 			hatchTimeToCompletion = shipHatch * h;
-		}else if(hatchTimeToCompletion == 0) {
-			hatchTimeToCompletion = shipHatch * ht;
-		}
+		//}else if(hatchTimeToCompletion == 0) {
+		//	hatchTimeToCompletion = shipHatch * ht;
+		//}
 		double cargoTimeToCompletion = 0;
-		if(c > 0) {
+		//if(c > 0) {
 			cargoTimeToCompletion = shipCargo * c;
-		}else if(cargoTimeToCompletion == 0) {
-			cargoTimeToCompletion = shipCargo * ct;
-		}
+		//}else if(cargoTimeToCompletion == 0) {
+		//	cargoTimeToCompletion = shipCargo * ct;
+		//}
 	
 		completionTime = hatchTimeToCompletion + cargoTimeToCompletion;
 		return completionTime;
